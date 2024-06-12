@@ -1,0 +1,104 @@
+<form [formGroup]="ChannelPartnerInformationFormdata" ngNativeValidate>
+<div class="ui-g-12" style="height: 63px ; padding: 0px 0px 0px 0px; width: 939px ; margin-left: 8px">
+        <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+ </div>
+
+        <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"  [closable]="false"></p-confirmDialog>
+<div class="ui-g-12 accordion-wrapper">
+        <p-accordion [multiple]="true">
+                <p-accordionTab header="Channel Partner Information"  [selected]="screenWidth>1100">
+                        <div class="ui-g">
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Active </label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                <p-checkbox name="groupname" formControlName="isActive" binary="true" (onChange)="checkstate()"></p-checkbox>
+
+                                        </div>
+                                </div>
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Name </label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                <input pInputText type="text" formControlName="name" />
+                                        </div>
+                                </div>
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Code </label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                <input pInputText type="text" maxlength="4" formControlName="code" />
+                                        </div>
+                                </div>
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Description </label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                <input pInputText type="text" formControlName="description" />
+                                        </div>
+                                </div>
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Stop Sell (%) </label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                        <p-inputMask [autoClear]="false" slotChar=" " mask="999" [style]="{'width':'90px'}" placeholder="Max 100%" formControlName="threshold"></p-inputMask>
+                                                       
+                                                <!--<p-inputMask [autoClear]="false" slotChar=" " size="4" mask="999" formControlName="threshold"></p-inputMask>-->
+                                              
+                                                <!--<p-message class="ui-g-12" *ngIf="ChannelPartnerInformationFormdata && ChannelPartnerInformationFormdata.controls.threshold
+                                &&ChannelPartnerInformationFormdata.controls.threshold.touched==false" severity="warn" text="Maximum threshold value is 100%"></p-message>-->
+                                        </div>
+                                      <div class="ui-g-5"  style="margin-left: 67px;height: 10px; padding-top:0px">
+                                      
+                                      
+                                                <p-message  *ngIf="thresholdFlag==1" severity="error" text="Please enter value less than or equal to 100"></p-message>
+                                      </div>
+                                </div>
+                                <div class="ui-g-12">
+                                        <div class="ui-g-3 ui-md-2">
+                                                <label>Organization ID</label>
+                                        </div>
+                                        <div class="ui-g-9 ui-md-10">
+                                                <input pInputText type="text" formControlName="organizationId" />
+                                        </div>
+                                </div>
+                                
+                                         
+                                
+                        </div>
+
+                </p-accordionTab>
+                <p-accordionTab header="Channel Subsidiary Information"  [selected]="false">
+
+                        <p-dataTable [value]="subsidiaryList"  [rows]="10" [responsive]="true" (onRowClick)="setSubsidiaryDetails($event)">
+                                <p-column field="name" header="Name" [sortable]="true" [style]="{'width':'13%', 'word-break' : 'break-all'}"></p-column>
+                                <p-column field="code" header="Code" [sortable]="true" [style]="{'width':'3%', 'word-break' : 'break-all'}"></p-column>
+                                <p-column field="discountAmount" header="Discount (optional)" [style]="{'width':'13%', 'word-break' : 'break-all'}"></p-column>
+                                <p-column field="isActive" header="Active" [sortable]="true" [style]="{'width':'3%', 'word-break' : 'break-all'}"></p-column>
+                                <p-column field="channelPartnerSubsidiaryKey" [hidden]="true" header="channelPartnerSubsidiaryKey" [style]="{'width':'13%', 'word-break' : 'break-all'}"></p-column>
+
+                        </p-dataTable>
+        
+                        <button class="plus" pButton type="submit" (click)="onClick()" label="+"></button>
+        
+        
+                </p-accordionTab>
+        <div class="buttonContainer">
+            <div>
+                <button pButton type="button" label="Cancel" class="cancel" (click)="cancel()"></button>
+            </div>
+
+            <div>
+                <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+                <button pButton type="submit" label="Save" class="primary" (click)="submitchannelPartner()"></button>
+            </div>
+        </div>
+        </p-accordion>
+</div>
+</form>

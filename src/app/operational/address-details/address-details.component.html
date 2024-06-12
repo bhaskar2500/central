@@ -1,0 +1,151 @@
+<form [formGroup]="addressDetailsFormdata" ngNativeValidate>
+  <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+  </div>
+  <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" [closable]="false"></p-confirmDialog>
+
+  <div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Address Details" [selected]="screenWidth>1100">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <label>Active</label>
+              </div>
+              <div class="ui-g-8">
+                <p-checkbox name="active" formControlName="active" binary="true" (onChange)="checkstate()"></p-checkbox>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+
+                <label>Address Type</label>
+                <span  class="pull-right span">*</span>
+              </div>
+              <div class="ui-g-8" style="height: 40px">
+                <p-dropdown [options]="addressTypeValue" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId" formControlName="addressTypeValue"
+                  placeholder="select" (click)="onClickAddressType()"></p-dropdown>
+                <p-message class="ui-g-12" *ngIf="addressDetailsFormdata && addressDetailsFormdata.controls.addressType && addressDetailsFormdata.controls.addressType.errors && addressDetailsFormdata.controls.addressType.dirty"
+                  severity="error" text="Please enter value for Address Type"></p-message>
+              </div>
+
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+
+                <label>Address 1</label>
+                <span  class="pull-right span">*</span>
+              </div>
+              <div class="ui-g-8" style="height: 75px;">
+                <!-- <input pInputText type="text" formControlName="address1" class="textareaAddress"/> -->
+                <textarea pInputTextarea [rows]="6" [cols]="22" formControlName="address1" class="textareaAddress" autoResize="autoResize"></textarea>
+                <p-message class="ui-g-12" *ngIf="addressDetailsFormdata && addressDetailsFormdata.controls.address1 && addressDetailsFormdata.controls.address1.errors && addressDetailsFormdata.controls.address1.dirty"
+                  severity="error" text="Please enter value for Address1"></p-message>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <label>Address 2</label>
+              </div>
+              <div class="ui-g-8">
+                <!-- <input pInputText type="text" formControlName="address2" class="textareaAddress"/> -->
+                <textarea pInputTextarea [rows]="6" [cols]="22" formControlName="address2" class="textareaAddress" autoResize="autoResize"></textarea>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+
+                <label>City</label>
+                <span  class="pull-right span">*</span>
+              </div>
+              <div class="ui-g-8" style="height: 44px">
+                <input pInputText type="text" formControlName="city" />
+                <p-message class="ui-g-12" *ngIf="addressDetailsFormdata && addressDetailsFormdata.controls.city && addressDetailsFormdata.controls.city.errors && addressDetailsFormdata.controls.city.dirty"
+                  severity="error" text="Please enter value for City"></p-message>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+
+                <label>State / Province</label>
+                <span  class="pull-right span asterix">*</span>
+              </div>
+              <div class="ui-g-8" style="height: 44px">
+                <p-dropdown [options]="statesList" [autoWidth]="false" formControlName="state" placeholder="Select" group="true"
+                  (onChange)="stateChanged($event)" filter="true"></p-dropdown>
+                <p-message class="ui-g-12" *ngIf="addressDetailsFormdata && addressDetailsFormdata.controls.state && addressDetailsFormdata.controls.state.errors && addressDetailsFormdata.controls.state.dirty"
+                  severity="error" text="Please enter value for State"></p-message>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+
+                <label>Zip Code / Postal Code</label>
+                <span  class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-8" style="height: 44px">
+                <p-inputMask #zipcode (onComplete)="alignMapUsingZipCode(zipcode)"   mask="99999" formControlName="zip" [autoClear]="false" slotChar=" " *ngIf="!isCanadaState"></p-inputMask>
+                <p-inputMask #zipcodeCanada (onComplete)="alignMapUsingZipCode(zipcode)"   mask="a9a9a9" formControlName="zip" [autoClear]="false" slotChar=" " *ngIf="isCanadaState"></p-inputMask>
+                <i class="fa fa-question-circle-o" pTooltip="For Canada Provinces please enter Postal code in the format:  'ananan' Here a means alphabet and n means numeric"
+                  aria-hidden="true" *ngIf="isCanadaState"></i>
+                <i class="fa fa-question-circle-o" pTooltip="For USA States / Territories please enter ZIP code in the format: 'nnnnn'. Here n means numeric"
+                  aria-hidden="true" *ngIf="!isCanadaState"></i>
+                <p-message class="ui-g-12" *ngIf="addressDetailsFormdata && addressDetailsFormdata.controls.zip && addressDetailsFormdata.controls.zip.errors && addressDetailsFormdata.controls.zip.dirty"
+                  severity="error" text="Please enter value for Zip Code"></p-message>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <label>One Way Street</label>
+              </div>
+              <div class="ui-g-8">
+                <p-checkbox name="onewaystreet" formControlName="oneWayStreet" binary="true"></p-checkbox>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <label>Publish</label>
+              </div>
+              <div class="ui-g-8">
+                <p-checkbox name="publish" formControlName="publish" binary="true"></p-checkbox>
+                <i class="fa fa-question-circle-o" style="vertical-align: bottom !important;" pTooltip="Publish to consumer."></i>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <label>Map</label>
+              </div>
+              <div class="ui-g-12 ui-md-6 ui-lg-8">
+                <agm-map [latitude]="mapLatitude" [longitude]="mapLongitude" [zoom]="zoomLevel" (mapClick)="onChoseLocation($event)">
+                  <agm-marker [latitude]="markerLatitude" [longitude]="markerLongitude" [markerDraggable]="true"></agm-marker>
+                </agm-map>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+      <div class="buttonContainer">
+            <div>
+                <button pButton type="button" label="Cancel" class="cancel" (click)="cancel()"></button>
+            </div>
+
+            <div>
+                <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+                <button pButton type="submit" label="Save" class="primary" (click)="saveAddressDetails()"></button>
+            </div>
+        </div>
+    </p-accordion>
+  </div>
+</form>

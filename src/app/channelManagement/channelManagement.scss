@@ -1,0 +1,51 @@
+.ui-datatable .ui-datatable-data > tr > td {
+    cursor: pointer;
+}
+.ui-table .ui-sortable-column.ui-state-highlight {
+    background-color:black;
+    color: #FFFFFF;
+}
+.ui-table .ui-sortable-column .ui-sortable-column-icon {
+    color: white;
+}
+.ui-table .ui-sortable-column.ui-state-highlight .ui-sortable-column-icon {
+    color: white;
+}
+.ui-table .ui-sortable-column:not(.ui-state-highlight):hover .ui-sortable-column-icon {
+    color: black;
+}
+
+.ui-datagrid .ui-datagrid-header {
+    background-color: black;
+    color:white;
+    font-weight: bold;
+}
+.ui-panel .ui-panel-content {
+    padding: 0em 0em; 
+}
+.ui-panel .ui-panel-titlebar {
+    padding: 0em 0em; 
+}
+.ui-widget-header {
+    text-transform: none;
+    
+    }
+
+    .ui-card.ui-widget.ui-widget-content.ui-corner-all{
+        .ui-card-header.ng-star-inserted{
+            background-color:#E90027;
+            color:white;
+             font-weight:bold;
+             height: 40px;
+             font-size:large;
+        }
+    }
+.toggle{
+    font-size: 25px;
+}
+
+
+#myTable,
+#myGrid .ui-datagrid{
+    margin-top: 15px;
+}

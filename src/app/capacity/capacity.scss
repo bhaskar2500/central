@@ -1,0 +1,102 @@
+
+.leftAlignedLabel{
+    float:left;
+    bottom:10px;
+}
+
+.numberField{
+    input.ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+        width:50px!important;
+    }
+}
+.lc-tooltip{
+    width:18px !important;
+    height:18px !important;
+}
+.commonBorderLayout{
+    border: 1px solid black;
+    max-width:865px;
+    margin-left:10px;
+    padding:4px;
+  }
+.calendarStyle{
+    width:140px;
+}
+.dateField{
+    margin-right: 20px;
+     .ui-accordion-content.ui-widget-content, .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+        width:85px !important;
+    }
+    
+    
+    .ui-widget-header .ui-button, .ui-widget-content .ui-button, .ui-widget.ui-button{
+        color:gray;
+        background:lightgray;
+        border: 1px solid grey;
+        border-left: 0 none;
+       
+        &:hover{
+            color:white;
+            background:lightgray;
+            border: 1px solid grey;
+            border-left: 0 none;
+           
+        }
+    }
+}
+.leftAligned {
+        margin-right: 100px!important;
+        font-weight: bold!important;
+    }
+.table-grey{
+.ui-table .ui-table-thead > tr > th, .ui-table .ui-table-tfoot > tr > td{
+        border: none;
+        background-color: #ecf0f1;
+        color: black;
+
+        &:hover{   
+            background:#ecf0f1;
+            border: none;
+        }
+}
+.ui-table .ui-table-tbody > tr > td {
+   border:none;
+   background-color: #ecf0f1;
+}
+
+.ui-table-summary.ui-widget-header.ng-star-inserted{
+    background-color:#ecf0f1 !important;
+     height: 50px;
+      border:0px !important;
+}
+    .ui-placeholder,ui-inputtext{
+        font-size:9px;
+        }
+        .ui-dropdown-label.ui-inputtext{
+        font-size:9px;
+            
+        }
+input.ng-untouched.ng-pristine.ng-valid {
+@media screen and (max-width: 411px) {
+    margin-left: 2px!important;
+    margin-top: 3px!important;
+    }
+@media screen and (max-width: 375px) {
+
+        margin-left: 2px!important;
+        margin-top: 2px!important;
+        }
+@media screen and (max-width: 414px) {
+        margin-left: 1px!important;
+        margin-top: 2px!important;
+        }
+}
+@media screen and (max-width: 360px) {
+    margin-left: 2px!important;
+    margin-top: 2px!important;
+    }
+
+}
+button[disabled], html input[disabled]{
+    font-family: "Montserrat", sans-serif !important
+}

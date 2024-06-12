@@ -1,0 +1,363 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  //CSS
+
+.ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tbody>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td {
+    height: 35px;
+    font-size: 15px;
+}
+.ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+    font-size: 12px;
+}
+.ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+   max-width: 260px;
+}
+
+textarea{
+    max-width: 260px;
+}
+
+.textareaAddress{
+ max-width: 260px;
+}
+input.ui-inputtext.ui-corner-all.ui-widget{
+ max-width: 260px;
+}
+.ui-multiselect.ui-widget{
+max-width: 260px;
+}
+
+ .ui-dropdown.ui-widget{
+max-width: 260px;
+ }
+ .input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+max-width: 260px;
+ }
+ .search-page .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+     max-width: 100% !important;
+ }
+ .sebm-google-map-container{
+    height: 300px;
+    width: 450px;
+}  
+.operational_adjust{
+    width: 36%;
+}
+
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  //CSS
+  .wide-text{
+      width : 95%;
+  }
+  .ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tbody>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td {
+    height: 35px;
+    font-size: 12px;
+}
+.ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+    font-size: 12px;
+}
+
+.textareaAddress{
+ max-width: 260px;
+}
+
+textarea{
+    max-width: 260px;
+}
+
+input.ui-inputtext.ui-corner-all.ui-widget{
+ max-width: 260px;
+}
+.ui-multiselect.ui-widget{
+max-width: 260px;
+}
+
+.ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+   max-width: 260px;
+}
+ .ui-dropdown.ui-widget{
+max-width: 260px;
+ }
+ .input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+max-width: 260px;
+ }
+ 
+ .search-page .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+     max-width: 100% !important;
+ }
+ .sebm-google-map-container{
+    height: 300px;
+    width: 450px;
+ }
+ .operational_adjust{
+     width: 45%;
+ }
+
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  //CSS
+  .wide-text
+  {
+    width: 95%;
+}
+  .ui-datatable .ui-datatable-thead>tr>th,.ui-datatable .ui-datatable-tbody>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td {
+    height: 35px;
+    font-size: 10px;
+}
+.ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+    font-size: 10px;
+}
+
+
+textarea{
+    max-width: 200px;
+}
+
+.textareaAddress{
+ max-width: 200px;
+}
+input.ui-inputtext.ui-corner-all.ui-widget{
+ max-width: 200px;
+}
+.ui-multiselect.ui-widget{
+max-width: 200px;
+}
+
+
+.ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+   max-width: 200px;
+}
+ .ui-dropdown.ui-widget{
+max-width: 200px;
+ }
+ .input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+max-width: 200px;
+ }
+ 
+ .search-page .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+     max-width: 100% !important;
+ }
+ .sebm-google-map-container{
+    height: 300px;
+    width: 450px;
+}
+.operational_adjust{
+    width: 58%;
+}
+
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  //CSS
+    //CSS
+  .ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tbody>tr>td,.ui-datatable .ui-datatable-tfoot>tr>td {
+    height: 35px;
+    font-size: 8px;
+    }
+    .ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+        font-size: 8px;
+    }
+
+
+    .textareaAddress{
+    max-width: 200px;
+    }
+    input.ui-inputtext.ui-corner-all.ui-widget{
+    max-width: 200px;
+    }
+    .ui-multiselect.ui-widget{
+    max-width: 200px;
+    }
+
+    textarea{
+        max-width: 200px;
+    }
+
+
+    .ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+    max-width: 200px;
+    }
+
+    .ui-dropdown.ui-widget{
+    max-width: 200px;
+    }
+    .input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+    max-width: 200px;
+    }
+    
+    .search-page .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+        max-width: 100% !important;
+    }
+    
+    label{
+        padding-top: 0px;
+    }
+    .sebm-google-map-container{
+        height: 300px;
+        width: 450px;
+    } 
+    .operational_adjust{
+        width: 56%;
+    } 
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  //CSSW
+    //CSS
+  
+  .ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tbody>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td {
+    height: 35px;
+    font-size: 8px;
+}
+.ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+    font-size: 8px;
+}
+
+.textareaAddress{
+ max-width: 200px;
+}
+input.ui-inputtext.ui-corner-all.ui-widget{
+ max-width: 200px;
+}
+.ui-multiselect.ui-widget{
+max-width: 200px;
+}
+
+
+textarea{
+    max-width: 200px;
+    border-top: 1px solid black;
+}
+
+.ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+   max-width: 200px;
+}
+
+ .ui-dropdown.ui-widget{
+max-width: 200px;
+ }
+ .input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+max-width: 200px;
+ }
+ 
+ .search-page .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+     max-width: 100% !important;
+ }
+  
+label{
+    padding-top: 0px;
+}
+
+.sebm-google-map-container{
+    height: 300px;
+    width: 381px;
+}
+.operational_adjust{
+    width: 68%;
+}
+}
+
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  //CSS
+   .ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tbody>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td {
+        height: 35px;
+        font-size: 8px;
+    }
+    .ui-table .ui-table-thead>tr>th, .ui-table .ui-table-tfoot>tr>td {
+        font-size: 8px;
+    }
+
+    .textareaAddress{
+    max-width: 160px;
+    }
+    input.ui-inputtext.ui-corner-all.ui-widget{
+    max-width: 160px;
+    }
+    .ui-multiselect.ui-widget{
+    max-width: 160px;
+    }
+
+    textarea{
+        max-width: 160px;
+        border-top: 1px solid black;
+    }
+
+
+    .ui-accordion-content.ui-widget-content .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+    max-width: 160px;
+    }
+
+    .ui-dropdown.ui-widget{
+    max-width: 160px;
+    }
+    input.ui-inputtext.ui-widget.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+    max-width: 160px;
+    }
+    .ui-accordion .ui-accordion-content {
+        padding: 0em;
+        padding-right:0.5em;
+    }
+    #page-wrapper{
+        padding: 0em;
+    }
+
+    [class^='ui-g']{
+        padding-right:0.1em;
+        padding-left:0.2em;
+    }
+    .ui-accordion {
+        width: 98%;
+    }
+    
+    label{
+        padding-top: 0px;
+    }
+    .sebm-google-map-container{
+        height: 300px;
+        width: 100%;
+    }
+}
+@media (max-width: 320px) {
+    .sebm-google-map-container{
+        height: 300px;
+        width: 100%;
+    }
+}

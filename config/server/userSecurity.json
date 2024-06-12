@@ -1,0 +1,237 @@
+[{
+          "role":"Admin",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"show"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                    }
+                 , {"id":"MerchantId", "fields":[{"id":"hostedSecureIdTxt", "permission":"disabled"}
+                                                 , {"id":"hostedSecureAPITokenTxt", "permission":"disabled"}
+                                                 , {"id":"saveMerchantIdDataBtn", "permission":"hidden"}
+                                                 ] , "permission":"allowed" }
+                 ]
+},
+{
+          "role":"AdminPlus",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"show"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                    }
+                 , {"id":"MerchantId", "fields":[{"id":"hostedSecureIdTxt", "permission":"disabled"}
+                                                 , {"id":"hostedSecureAPITokenTxt", "permission":"disabled"}
+                                                 , {"id":"saveMerchantIdDataBtn", "permission":"hidden"}
+                                                 ] , "permission":"allowed" }
+                 ]
+},
+{
+          "role":"Rates Mgt Super User",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                }, {"id":"MerchantId", "permission":"not-allowed"}
+                , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"show"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                ]
+},
+{
+          "role":"SuperUser",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                }, {"id":"MerchantId", "permission":"not-allowed"}
+                , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"show"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                ]
+},
+{
+          "role":"RatesMgr",
+           "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                }, {"id":"MerchantId", "permission":"not-allowed"}
+                , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"remove"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                , {"id":"ChannelPartnerDetails", "permission":"not-allowed"}
+                ]
+},
+{
+          "role":"Author",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                }, {"id":"MerchantId", "permission":"not-allowed"}
+                , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"show"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                , {"id":"ChannelPartnerDetails", "permission":"not-allowed"}
+                , {"id":"SubsidiaryDetails", "permission":"not-allowed"}
+                ]
+},
+{
+          "role":"Contact Center",
+          "entitlements":[
+                    {"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"remove"}
+                                                            ] , "permission":"allowed"
+                }, {"id":"MerchantId", "permission":"not-allowed"}
+                 , {"id":"topBar", "fields":[ {"id":"ChannelManagementLnk", "permission":"show"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                , {"id":"ChannelPartnerDetails", "permission":"not-allowed"}
+                , {"id":"SubsidiaryDetails", "permission":"not-allowed"}
+                , {"id":"RateComponent", "fields":[ {"id":"addRateBtn", "permission":"remove"} ]}
+                , {"id":"RateDetailsComponent", "fields":[
+                                                          {"id":"isActiveChckBx", "permission":"disabled"}
+                                                         , {"id":"rateTypeDrpDwn", "permission":"disabled"}
+                                                         , {"id":"rateNameTxt", "permission":"disabled"}
+                                                         , {"id":"incrementDrpDwn", "permission":"disabled"}
+                                                         , {"id":"minStayHrsDrpDwn", "permission":"disabled"}
+                                                         , {"id":"minStayMinDrpDwn", "permission":"disabled"}
+                                                         , {"id":"maxStayHrsDrpDwn", "permission":"disabled"}
+                                                         , {"id":"maxStayMinDrpDwn", "permission":"disabled"}
+                                                         , {"id":"priceTxt", "permission":"disabled"}
+                                                         , {"id":"maxDailyPriceTxt", "permission":"disabled"}
+                                                         , {"id":"applicableDaysMulti", "permission":"disabled"}
+                                                         , {"id":"inLowerLmtDrpDwn", "permission":"disabled"}
+                                                         , {"id":"inUpperLmtDrpDwn", "permission":"disabled"}
+                                                         , {"id":"outLowerLmtDrpDwn", "permission":"disabled"}
+                                                         , {"id":"outUpperLmtDrpDwn", "permission":"disabled"}
+                                                         , {"id":"additionalDaysDrpDwn", "permission":"disabled"}
+                                                         , {"id":"combinableChckBx", "permission":"disabled"}
+                                                         , {"id":"nonRefundableChckBx", "permission":"disabled"}
+                                                         , {"id":"multiInOutChckBx", "permission":"disabled"}
+                                                         , {"id":"channelsMulti", "permission":"disabled"}
+                                                         , {"id":"rateStartDtCal", "permission":"disabled"}
+                                                         , {"id":"rateEndDtCal", "permission":"disabled"}
+                                                         , {"id":"saveRatesBtn", "permission":"remove"}
+                                                        ]}
+                ]
+},
+{
+          "role":"Merchant ID Data",
+          "entitlements":[{"id": "enforcement", "fields":[{"id":"daysBeforeSentTxt", "permission":"disabled"}
+                                          ]}
+                  , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"remove"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"show"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"remove"}
+                                                            ] , "permission":"allowed"
+                    }
+                  , {"id":"MerchantId", "permission":"allowed"}
+                  , {"id":"EnforcementComponent", "permission":"not-allowed"}
+                  , {"id":"RateComponent", "permission":"not-allowed"}
+                  , {"id":"RateDetailsComponent", "permission":"not-allowed"} 
+                  , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"remove"}
+                                            , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                            ] }
+                , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                , {"id":"ChannelManagement", "permission":"not-allowed"}
+                , {"id":"ChannelPartnerDetails", "permission":"not-allowed"}
+                , {"id":"SubsidiaryDetails", "permission":"not-allowed"}
+               ]
+},
+{
+          "role":"EnforcementAdmin",
+          "entitlements":[{"id": "enforcement", "permission":"allowed" }
+                         , {"id":"LocationDetailsComponent", "fields":[{"id":"LOD_FeaturesCard", "permission":"show"}
+                                                            , {"id":"LOD_CapacityCard", "permission":"show"}
+                                                            , {"id":"LOD_ContactsCard", "permission":"show"}
+                                                            , {"id":"LOD_OperationalCard", "permission":"show"}
+                                                            , {"id":"LOD_NotesCard", "permission":"show"}
+                                                            , {"id":"LOD_MarketingCard", "permission":"show"}
+                                                            , {"id":"LOD_EnforcementCard", "permission":"show"}
+                                                            , {"id":"LOD_RatesCard", "permission":"show"}
+                                                            , {"id":"LOD_MerchantIdCard", "permission":"remove"}
+                                                            , {"id":"LOD_OccupancyResetCard", "permission":"show"}
+                                                            ] , "permission":"allowed"
+                        }
+                        , {"id":"topBar", "fields":[{"id":"ChannelManagementLnk", "permission":"remove"}
+                                                , {"id":"ReferenceManagementLnk", "permission":"remove"}
+                                                ] }
+                        , {"id":"ReferenceTableManagement", "permission":"not-allowed"}
+                        , {"id":"ChannelManagement", "permission":"not-allowed"}
+                        , {"id":"ChannelPartnerDetails", "permission":"not-allowed"}
+                        , {"id":"SubsidiaryDetails", "permission":"not-allowed"}
+                        , {"id":"OccupancyResetComponent", "fields":[
+                                                                  {"id":"saveOccupancyInformationBtn", "permission":"remove"}
+                                                                ]
+                                                          , "permission":"allowed"}
+                        ]
+}
+]

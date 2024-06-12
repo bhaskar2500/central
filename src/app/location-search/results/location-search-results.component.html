@@ -1,0 +1,157 @@
+<div class="container ui-g">
+  <div class="ui-g-12">
+    <div *ngIf="rows!=0" [hidden]="isSmallDevice" class="toggle">
+      <button *ngIf="!tableflag" (click)="tableView()">
+        <i class="fa fa-th-list" aria-hidden="true"></i>
+        <!-- <button *ngIf="!tableflag"pButton type="button" label="Table view" (click)="tableView()" class="plus"></button>-->
+      </button>
+    </div>
+    <div *ngIf="rows!=0" [hidden]="isSmallDevice" class="toggle">
+      <button *ngIf="cardflag" (click)="cardView()">
+        <i class="fa fa-th" aria-hidden="true"></i>
+        <!-- <button *ngIf="cardflag"pButton type="button" label="Card view" (click)="cardView()" class="plus"></button>-->
+      </button>  
+    </div>
+    <h2 class="results-header">CHOOSE A LOCATION</h2>
+  </div>
+  <div class="ui-g-12" style="padding-top:15px;">
+    <span *ngIf="filterBy" style="font-size: 15px;
+      color: black;
+      font-weight: bold;"> Showing results for "{{searchBy}}: {{filterValue}}"</span>
+    <span *ngIf="!filterBy" style="font-size: 15px;
+      color: black;
+      font-weight: bold;"> Showing results for "All locations"</span>
+  </div>
+  <div *ngIf="tableflag" class="ui-md-12">
+    <p-dataTable #dt [value]="availableLocations" [expandableRows]="true" [responsive]="true" [rows]="20" [style]="{'line-height':1,'width':'100%','margin-bottom':'20px'}"
+      [loading]="loading" loadingIcon="fa-circle-o-notch" (onRowClick)="putGeoLocationData($event)" [lazy]="true" [totalRecords]="rows"
+      [style]="{'background-color':'black'}" (onLazyLoad)="loadLocationLazy($event)" [paginator]="true" rowHover="true">
+
+      <p-column expander="true" [style]="{'width':'4%','word-break' : 'break-all'}" header="Status" field="newLocation" [resizable]="true">
+      </p-column>
+      <ng-template let-rowData pTemplate="rowexpansion">
+        <div class="ui-g-12 ui-md-3 ui-lg-3" style="font-size:12px" *ngFor="let field of rowData.newLocationRules">
+          <span class="new fa fa-2x fa-check" *ngIf="field.selected"></span>
+          <span class="old  fa fa-2x fa-close" *ngIf="!field.selected"></span>
+          {{ field.fieldName }}
+        </div>
+      </ng-template>
+
+      <p-column field="locationCode" sortField="locationCode" header="LOC #" sortable="true" [style]="{'width':'5%','word-break' : 'break-all'}">
+      </p-column>
+
+      <p-column field="name" header="Name" sortable="true" sortField="name" [style]="{'width':'12%','word-break' : 'break-all'}">
+        <ng-template let-row="rowData" pTemplate>
+          <span>
+            {{row.name }}
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column header="Address Line1" sortable="true" sortField="address1" [style]="{'width':'13%','word-break' : 'break-all'}">
+        <ng-template let-row="rowData" pTemplate>
+          <span style="cursor: pointer;">
+            {{ row.primaryAddress["address1"] }}
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column header="City" sortable="true" sortField="city" [style]="{'width':'5%','word-break' : 'break-all'}">
+        <ng-template let-row="rowData" pTemplate>
+          <span style="cursor: pointer;">
+            {{ row.primaryAddress["city"] }}
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column field="address" header="State" sortable="true" sortField="state" [style]="{'width':'4%','word-break' : 'break-all'}">
+        <ng-template let-row="rowData" pTemplate>
+          <span style="cursor: pointer;">
+            {{ row.primaryAddress["state"] }}
+          </span>
+        </ng-template>
+      </p-column>
+      <p-column field="opsCenter" header="Ops Center" sortable="true" sortField="opsCenter" [style]="{'width':'7%','word-break' : 'break-all'}">
+      </p-column>
+      <p-column field="region" header="Region" sortable="true" sortField="region" [style]="{'width':'5%','word-break' : 'break-all'}">
+      </p-column>
+    </p-dataTable>
+  </div>
+  <p-dataGrid *ngIf="!tableflag" [style]="{'margin-top':'20px','margin-bottom':'20px' }" [value]="availableLocations" [paginator]="true"
+    [rows]="10" (onLazyLoad)="loadLocationLazy($event)" [lazy]="true" [totalRecords]="rows">
+
+    <p-header>
+      <div align="left">
+        Locations Information
+        <!--<button style=" background-color: black;color:white; float: right; padding: 0em 0em;"pButton type="submit" (click)="onClick()" label="+ Add New"></button>-->
+      </div>
+    </p-header>
+    <ng-template let-search pTemplate="item">
+      <div style="padding:3px" class="ui-g-12 ui-md-6 ui-lg-4">
+        <p-panel (click)="putGeoLocationData(search)">
+          <p-card>
+
+            <p-header class="ui-g">
+              <div class="ui-g-12">
+                <b>LOC #</b>
+                <span> {{search.locationCode}}</span>
+              </div>
+            </p-header>
+
+
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <div>
+                  <b>New:</b>
+                  <span class="new" *ngIf="search.newLocation">NEW</span>
+                  <span class="new" *ngIf="!search.newLocation">OLD </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Name:</b>
+                <span class="addSpaces">{{search.name}}</span>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Address Line1:</b>
+                <span class="addSpaces"> {{search.primaryAddress["address1"]}}</span>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>City:</b>
+                <span class="addSpaces"> {{search.primaryAddress["city"]}}</span>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>State:</b>
+                <span class="addSpaces"> {{search.primaryAddress["state"]}}</span>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Ops Center:</b>
+                <span class="addSpaces"> {{search.opsCenter}}</span>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Region:</b>
+                <span> {{search.region}}</span>
+              </div>
+            </div>
+          </p-card>
+        </p-panel>
+
+      </div>
+    </ng-template>
+  </p-dataGrid>
+</div>

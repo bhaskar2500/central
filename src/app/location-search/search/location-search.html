@@ -1,0 +1,35 @@
+<div style="padding-top:0px;" class="middle-box text-center animated fadeInDown">
+    <div class="search-page">
+        <div>
+            <h2 style="font-weight:500">CHOOSE A LOCATION</h2>
+        </div>
+        <h3></h3>
+        <form [formGroup]="searchFormdata" class="m-t" role="form" action="#">
+            <div class="form-group">
+                <div class="black-box">
+                    <div class="ui-inputgroup">
+                        <p-dropdown #searchDropdown class="search-bar" [options]="items" [autofocus]="openDropDown" [autoWidth]="false" formControlName="search"
+                            placeholder="Search by" [style]="{'min-width':'1em','max-width' : '7em !important'}"></p-dropdown>
+                        <p-autoComplete [size]="40" class="search-bar" [suggestions]="locationAttributeValueList" (keydown)="searchLocationOnKeyEnter($event)"  (completeMethod)="filterLocAttributes($event)" placeholder="Keyword"
+                            dataKey="value" formControlName="keyword"  [minLength]="3">
+                        </p-autoComplete>
+                        <button style="width: 60px; font-size:35px; border-radius: 0;" pButton type="button" (click)="searchLocationOnClick($event)" icon="fas fa-search"></button>
+                        <!-- (keydown)="searchLocationOnKeyEnter($event)" -->
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 style="font-weight:500">OR</h2>
+            </div>
+            <div>
+                <button style="background-color: #d13239;
+        color: white; 
+        border-color: #d13239;
+        font-size:25px;
+        border-radius: 0px;
+        font-weight: 500;
+        padding" (click)="allLocation($event)" pButton type="submit" label="SEE ALL LOCATIONS"></button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+<div class="ui-g-12" style="height: 64px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px"
+[lcPageSecurity] = "'OperationalComponent'" >
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+</div>
+
+<div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+        <p-accordionTab header="Operational Information" [selected]="screenWidth>1100">
+            <form [formGroup]="operationalFormdata" ngNativeValidate>
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+
+                                <label>Text and Go</label>
+
+                            </div>
+                            <div class="ui-g-9">
+                                <p-inputMask mask="(999) 999-9999" formControlName="customerServicePhoneNumber" placeholder="(999) 999-9999"></p-inputMask>
+                                <!-- <p-message *ngIf="operationalFormdata && operationalFormdata.controls.customerServicePhoneNumber && operationalFormdata.controls.customerServicePhoneNumber.errors && operationalFormdata.controls.customerServicePhoneNumber.dirty"
+                                    severity="error"></p-message> -->
+                                <i class="fa fa-question-circle-o" pTooltip="Text & Go phone number is for valet assist locations that allow customers the ability to alert the location ahead of time that they will soon pick up their car.  Some refer to this as ElimiWait or Zingle"
+                                    aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <!-- <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label>Neighborhood</label>
+                            </div>
+                            <div class="ui-g-9">
+
+                                <input pInputText type="text" formControlName="neighborhood" />
+
+                                <i class="fa fa-question-circle-o" pTooltip="Enter the name of the neighborhood the location is in as it most commonly referred to by local customers"
+                                    aria-hidden="true"></i>
+                            </div>
+                        </div> -->
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label>How to find it</label>
+                            </div>
+                            <div class="ui-g-9">
+                                <textarea pInputTextarea [rows]="10" [cols]="14" pInputTextarea autoResize="autoResize" formControlName="howToFind" style="width:260px"></textarea>
+                                <i class="fa fa-question-circle-o" pTooltip="Enter clear, straightforward driving instructions for finding the location (landmarks if applicable)"
+                                    aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label>Parking Location Description</label>
+                            </div>
+                            <div class="ui-g-9">
+                                <textarea pInputTextarea [rows]="10" [cols]="14" pInputTextarea autoResize="autoResize" formControlName="parkingLocationDescription"
+                                    style="width:260px"></textarea>
+
+                                <i class="fa fa-question-circle-o" pTooltip="Enter a Customer Friendly description of the location" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label>Parking Instructions</label>
+                            </div>
+                            <div class="ui-g-9">
+                                <textarea pInputTextarea [rows]="10" [cols]="14" pInputTextarea autoResize="autoResize" formControlName="parkingInstructions"
+                                    style="width:260px"></textarea>
+
+                                <i class="fa fa-question-circle-o" pTooltip='Enter any special instructions for parking "Display parking receipt on dash"'
+                                    aria-hidden="true"></i>
+
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label>Parking Disclosures</label>
+                            </div>
+                            <div class="ui-g-9">
+                                <textarea pInputTextarea [rows]="10" [cols]="14" pInputTextarea autoResize="autoResize" formControlName="parkingDisclosures"
+                                    style="width:260px"></textarea>
+                                <i class="fa fa-question-circle-o" pTooltip='Enter any disclosures a parker needs to be aware' aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+
+                                <label>Revenue System</label>
+                                <span class="pull-right asterix">*</span>
+                            </div>
+                            <div class="ui-g-9">
+                                <p-dropdown [options]="revenueSystem" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId" formControlName="revenueSystem"
+                                    placeholder="Select"></p-dropdown>
+                                <p-message *ngIf="operationalFormdata && operationalFormdata.controls.revenueSystem && operationalFormdata.controls.revenueSystem.errors && operationalFormdata.controls.revenueSystem.dirty"
+                                    severity="error" text="Please select Revenue System"></p-message>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </p-accordionTab>
+
+        <p-accordionTab header="Addresses" [selected]="false">
+            <div class="ui-g">
+                <p-dataTable [value]="addressData" [rows]="10" [responsive]="true" (onRowClick)="addressDetails($event)">
+                    <p-column field="addressTypeValue" header="Address Type" [style]="{'width':'8%','word-break' : 'break-all'}">
+                    </p-column>
+                    <!-- <p-column header="Street Number"></p-column>  -->
+                    <p-column field="address1" header="Street Name" [style]="{'width':'15%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="city" header="City" [style]="{'width':'11%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="state" header="State" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="zip" header="Zip Code" [style]="{'width':'7%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="isOneWayFormatted" header="One Way" [style]="{'width':'7%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="publishFormatted" header="Publish" [style]="{'width':'6%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="geoCodingType" header="Location Mapped" [style]="{'width':'16%','word-break' : 'break-all'}">
+                    </p-column>
+
+                </p-dataTable>
+
+                <button pButton type="button" label="+" (click)="onClick()" class="plus" [lcFieldSecurity]="'addAddressBtn'">
+                </button>
+            </div>
+        </p-accordionTab>
+        <p-accordionTab header="Hours Of Operation" [selected]="false">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6">
+                    <form [formGroup]="operationalFormdata" ngNativeValidate>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label> Time Zone </label>
+                            </div>
+                            <div class="ui-g-9">
+                                <p-dropdown [options]="timeZone" formControlName="timeZone" placeholder="Select"></p-dropdown>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label> Day Light Saving </label>
+                            </div>
+                            <div class="ui-g-9">
+                                <p-checkbox   name="dayLightSaving" formControlName="dayLightSaving" binary="true"></p-checkbox>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-3">
+                                <label> Allow Overnight</label>
+                            </div>
+                            <div class="ui-g-9">
+                                <p-checkbox name="allowOvernight" binary="true" formControlName="allowOvernight"></p-checkbox>
+                                <i class="fa fa-question-circle-o" style="vertical-align:bottom" pTooltip="Check the box if the location allows overnight parking" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ui-g-12 ui-md-6"></div>
+                <div class="ui-g-12 ui-md-7 ui-lg-4 operational_adjust">
+                    <p-table id="myTable" [value]="hoursOfOperation" [responsive]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style=" width:25%; word-break:break-all">Day
+                                </th>
+                                <th style=" width:14%; word-break:break-all">Closed
+                                </th>
+                                <th style=" width:14%; word-break:break-all">24 Hrs
+                                </th>
+                                <th style=" width:25%; word-break:break-all">Open Time
+                                </th>
+                                <th style=" width:25%; word-break:break-all">Close Time
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                            <tr class="ui-widget-header" [pSelectableRow]="rowData">
+                                <td>
+                                    <span class="ui-column-title">Day</span>
+                                    <span>{{rowData.name }}</span>
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Closed</span>
+                                    <p-checkbox name="closed" [disabled]="rowData.is24HourOpen" binary="true" [(ngModel)]="rowData.closed">
+                                    </p-checkbox>
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">24 Hrs</span>
+                                    <!-- <p-checkbox name="twentyFourHours" [style]="{'width':'65px'}" binary="true" formControlName="sundayTwentyFourHours" [disabled]="operationalFormdata.controls['sunday'].value"></p-checkbox> -->
+                                    <p-checkbox name="closed" [disabled]="rowData.closed" binary="true" (onChange)="setTimeToHrs($event,rowData)"  [(ngModel)]="rowData.is24HourOpen">
+                                    </p-checkbox>
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Open Time</span>
+                                    <!-- <p-dropdown [options]="closeTime" [style]="{'width':'90px'}" formControlName="sundayCloseDropdown" placeholder="Select" float="left"
+                                            [disabled]="operationalFormdata.controls['sunday'].value || operationalFormdata.controls['sundayTwentyFourHours'].value"></p-dropdown> -->
+                                    <p-dropdown  [disabled]="rowData.is24HourOpen || rowData.closed" (onChange)="setEmptyToSelect($event, 'open',rowData)" [(ngModel)]="rowData.openTime" [options]="closeTime" [style]="{'width':'90px'}" placeholder="Select"></p-dropdown>
+                                </td>
+                                <td>
+                                    <span class="ui-column-title">Close Time</span>
+                                    <p-dropdown  [disabled]="rowData.is24HourOpen || rowData.closed" (onChange)="setEmptyToSelect($event, 'close',rowData)" [(ngModel)]="rowData.closeTime" [options]="closeTime" [style]="{'width':'90px'}" placeholder="Select"></p-dropdown>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </p-accordionTab>
+        <p-accordionTab header="Photographs" [selected]="false">
+            <div class="ui-g-12">
+                <div class="ui-g-12 ui-md-4 ui-lg-3" *ngFor="let image of photos" style="text-align:center;">
+                    <img  [src]="image.imageLink" class="fas fa-spinner e2e-untrusted-src" width=200 height=200 (click)="onPhotoClick(image)" [lcFieldSecurity]="'photographImg'">
+                </div>
+            </div>
+            <button pButton type="button" label="+" (click)="createNewPhoto()" class="plus" [lcFieldSecurity]="'addPhotographBtn'"></button>
+        </p-accordionTab>
+        <div class="buttonContainer">
+            <div>
+                <button pButton type="button" label="Cancel" class="cancel" (click)="cancel()"></button>
+            </div>
+
+            <div>
+                <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+                <button pButton type="submit" label="Save" class="primary" (click)="saveOperational()" [lcFieldSecurity]="'saveOperationalBtn'"></button>
+            </div>
+        </div>
+    </p-accordion>
+</div>

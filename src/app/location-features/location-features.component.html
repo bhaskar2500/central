@@ -1,0 +1,348 @@
+<form [formGroup]="featuresFormdata" ngNativeValidate  [lcPageSecurity] = "'LocationFeaturesComponent'">
+ <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+ </div>
+
+ <div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+        <p-accordionTab header="Location Features" [selected]="screenWidth>1100">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6">
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Lot Number </label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" formControlName="lotNumber" disabled="true" />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Lot Description</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" style="opacity:1" formControlName="lotDescription" disabled="true" />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            
+                            <label>Publish Name</label>
+                            <span class="pull-right span asterixsign">*</span> 
+                        </div>
+                        <div class="ui-g-8" style="height: 40px">
+                            <input pInputText type="text" formControlName="publishedName" />
+                            <p-message *ngIf="featuresFormdata && featuresFormdata.controls.publishedName && featuresFormdata.controls.publishedName.errors && featuresFormdata.controls.publishedName.dirty"
+                                severity="error" text="Field is required"></p-message>
+                               
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Publish to Web</label>
+                        </div>
+
+                        <div class="ui-g-8">
+                            <p-checkbox name="publishtoweb" binary="true" formControlName="publishToWeb" (click)="onCheckboxClick()"
+                            [disabled]="!featuresFormdata.controls['publishedName'].value || !featuresFormdata.controls['lotSignage'].value || !featuresFormdata.controls['facilityType'].value || !featuresFormdata.controls['garageType'].value">
+                        </p-checkbox>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Explanation</label>
+                        </div>
+
+                        <div class="ui-g-8">
+                         <input 
+                          pInputText type="text"  formControlName="explanation" style="float: left;"/>
+                         <i class="fa fa-question-circle-o" pTooltip="If not published, provide explanation." aria-hidden="true"></i>
+                        </div>
+                    </div>
+<!-- 
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Publish to Mobile</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-checkbox name="publishtomobile" binary=true formControlName="publishToMobile"></p-checkbox>
+                        </div>
+                    </div> -->
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Lot Branding</label>
+                            <span class="pull-right span asterixsign">*</span> 
+                        </div>
+                        <div class="ui-g-8" style="height: 40px">
+                            <p-dropdown [options]="lotSignageList" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId" formControlName="lotSignage"
+                                placeholder="Select"></p-dropdown>
+                                <p-message *ngIf="featuresFormdata && featuresFormdata.controls.lotSignage && featuresFormdata.controls.lotSignage.errors && featuresFormdata.controls.lotSignage.dirty"
+                                severity="error" text="Field is required" required></p-message>
+                               
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Owner Depository</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText type="text" formControlName="ownerDepository" disabled="true" />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Facility Type</label>
+                            <span class="pull-right span asterixsign">*</span>  
+                        </div>
+                        <div class="ui-g-8" style="height: 40px">
+                            <p-multiSelect [options]="facilitytypeList" pTooltip="{{toolTipFacilityType}}" (onChange)="onFacilityTypeSelected($event)" [required]=true defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" formControlName="facilityType">
+
+                            </p-multiSelect>
+                            <p-message *ngIf="featuresFormdata && featuresFormdata.controls.facilityType && featuresFormdata.controls.facilityType.errors && featuresFormdata.controls.facilityType.dirty"
+                                severity="error" text="Field is required"></p-message>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> Service Type</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-multiSelect [options]="serviceTypeList" pTooltip="{{toolTipServiceType}}" (onChange)="onServiceTypeSelected($event)" defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" formControlName="serviceType"></p-multiSelect>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> Validation Methods</label>
+                        </div>
+                        <div class="ui-g-8">
+                         
+                            <p-multiSelect [options]="validationMethodList" pTooltip="{{toolTipValidationMethods}}" (onChange)="onValidationMethods($event)" defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" placeholder="Select" formControlName="validationMethods"></p-multiSelect>
+                        </div>
+                    </div>
+            
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Garage Type</label>
+                            <span class="pull-right span asterixsign">*</span> 
+                        </div>
+                        <div class="ui-g-8" style="height: 40px">
+                            <p-dropdown [options]="garagetype" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId" formControlName="garageType"
+                                placeholder="Select"></p-dropdown>
+                                <p-message *ngIf="featuresFormdata && featuresFormdata.controls.garageType && featuresFormdata.controls.garageType.errors && featuresFormdata.controls.garageType.dirty"
+                                severity="error" text="Field is required"></p-message>
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> Available to Public</label>
+                        </div>
+                        <div class="ui-g-2">
+                             
+                            <p-checkbox name="Transparkingavailable" binary="true" formControlName="availableToPublic"></p-checkbox>
+                            <i class="fa fa-question-circle-o" pTooltip="Check the box to indicate this location is available to be sold to the general public online." aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Facility Access</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-dropdown [options]="facilityAccess" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId" formControlName="facilityAccessType"
+                                placeholder="Select"></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> ADA Spaces </label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-inputMask [autoClear]="false" slotChar=" "
+                             [style]="{'width':'100px'}" class="numberField" 
+                             size="4" mask="9999" formControlName="adaSpaceCount"></p-inputMask>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> Height Restriction</label>
+                        </div>
+                        <div class="ui-g-2">
+                           
+                            <p-checkbox name="heightrestrication" binary="true" formControlName="heightRestriction"></p-checkbox>
+                            <i class="fa fa-question-circle-o" pTooltip="Check the box if there is a Height Restriction to convey to the parkers. If multi-level with varying heights, indicate the lowest level height." aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label> Max Height</label>
+                        </div>
+                        <div class="ui-g-6">
+                             
+                            <div style="display:inline-block;width:50px;padding: 0px;">
+                                    <p-inputMask [autoClear]="false" slotChar="" mask="99"  [style]="{'width': '41px'}" placeholder="Ft" formControlName="feet"
+                                    [disabled]="!featuresFormdata.controls['heightRestriction'].value" class="quotes"></p-inputMask>
+                            </div>
+                           
+                            <div style="display:inline-block;width:50px;padding: 0px;">
+                                    <p-inputMask [autoClear]="false"  slotChar="" mask="99" [style]="{'width': '41px'}" placeholder="In" formControlName="inches"
+                                    [disabled]="!featuresFormdata.controls['heightRestriction'].value" class="doubleQuotes"></p-inputMask>
+                            </div>
+                        
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-accordionTab>
+
+        <p-accordionTab header="Transient Parking" [selected]="false">
+            <div class="ui-g">
+               
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-g-12">
+                            <div class="ui-g-4">
+                                <label>Transient Parking Available</label>
+                            </div>
+                            <div class="ui-g-2">
+                           
+                                <p-checkbox name="monthlyParkerRequest" binary="true" formControlName="transientParking"></p-checkbox>
+                                <i class="fa fa-question-circle-o" pTooltip="Check the box if the location offers Hourly, Block, or Daily type parking (non-Monthly)." aria-hidden="true"></i>
+                            </div>
+                        </div>
+                     <div class="ui-g-12">
+                           <div class="ui-g-4">
+                             <label>Payment Options</label>
+                           </div>
+                           <div class="ui-g-8">
+                                <p-multiSelect [options]="transientPaymentOptionsList" pTooltip="{{toolTipTransientPaymentOptions}}" (onChange)="onTransientPaymentOptions($event)" defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" formControlName="transientLocationPaymentOptions">
+
+                                </p-multiSelect>
+
+                           </div>
+                     </div>
+                   
+                    </div>
+           
+           </div> 
+        </p-accordionTab>
+
+        <p-accordionTab header="Monthly Parking" [selected]="false">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6">
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Monthly Parking Available</label>
+                        </div>
+                        <div class="ui-g-2">
+                        
+                            <p-checkbox name="monthlyParkerRequest" formControlName="monthlyParking" binary="true"> </p-checkbox>
+                         
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                             <label>Payment Options</label>
+                        </div>
+                        <div class="ui-g-8">
+                          <p-multiSelect [options]="monthlyPaymentOptionList" pTooltip="{{toolTipMonthlyPaymentOptions}}" (onChange)="onMonthlyPaymentOptions($event)" defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" formControlName="monthlyLocationPaymentOptions">
+                          </p-multiSelect>
+                        </div>
+                    </div>
+                    <!-- <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label>Monthly Parker Request Approval</label>
+                    </div>
+                    <div class="ui-g-2">
+                        <p-checkbox name="monthlyParkerAvailable" formControlName="monthlyParkingApproval" binary="true"> </p-checkbox>
+                        <i class="fa fa-question-circle-o" pTooltip="Check the box if Monthly parking requires FM approval before direct online purchase may be made." aria-hidden="true"></i>    
+                    </div>
+                    </div>
+                    -->
+                </div>
+               
+            </div>
+        </p-accordionTab>
+
+        <p-accordionTab header="Supported Vehicle Type" [selected]="false">
+            <div class="ui-g">
+               <div class="ui-g-12 ui-md-6">
+                    <div class="ui-g-4">
+                            <label>Supported Vehicle Type</label>
+                    </div>
+                    <div class="ui-g-8">
+                    <p-multiSelect [options]="supportedVehicleList" pTooltip="{{toolTipsSupportedType}}" (onChange)="onSupportedType($event)" defaultLabel="Select" optionLabel="elementValue" dataKey="elementId" formControlName="supportedVehicleTypes">
+                       </p-multiSelect>
+                    </div>
+               </div>  
+            </div>
+        </p-accordionTab>
+
+        <p-accordionTab header="Electric Vehicle Capacity" [selected]="false">
+            <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6">
+                      <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Regular EV Spaces</label>
+                        </div>
+                        <div class="ui-g-4">
+                              <p-inputMask [autoClear]="false" slotChar=" " [style]="{'width':'50px'}" class="numberField" size="4" mask="999" formControlName="regularEV"></p-inputMask>
+                              <i class="fa fa-question-circle-o" pTooltip="Enter the number of spaces with a Regular EV charging station."  aria-hidden="true"></i>  
+                            </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label>Tesla Supercharger Spaces</label>
+                        </div>
+                        <div class="ui-g-4">
+                       
+                        <p-inputMask [autoClear]="false" class="numberField" [style]="{'width':'50px'}" slotChar=" " size="4" mask="999" formControlName="teslaSuperCharger"></p-inputMask>
+                        <i class="fa fa-question-circle-o" pTooltip="Enter the number of Tesla Supercharger stations available." aria-hidden="true"></i>    
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </p-accordionTab>
+
+        <p-accordionTab header="Available Amenities" [selected]="false">
+            <div class="ui-g">
+               <div class="ui-g-12 ui-md-6">
+                  <div class="ui-g-4">
+                     <label> Available Amenities </label>
+                  </div>
+                  <div class="ui-g-8">
+                <p-multiSelect [options]="amenitiesList" defaultLabel="Select" pTooltip="{{toolTipAvailableAmenities}}" (onChange)="onAvailableAmenities($event)" optionLabel="elementValue" dataKey="elementId" formControlName="amentities">
+                 </p-multiSelect>
+                  </div>
+               </div>
+
+            </div>
+        </p-accordionTab>
+
+        <div class="buttonContainer">
+            <div>
+                <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+            </div>
+
+            <div>
+                <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+                <button pButton type="submit" label="Save" class="primary" (click)="saveFeaturesData()" [lcFieldSecurity]="'saveFeaturesBtn'"></button>
+            </div>
+        </div>
+    </p-accordion>
+</div>
+    <form>

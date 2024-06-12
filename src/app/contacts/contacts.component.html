@@ -1,0 +1,125 @@
+<div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px"
+ [lcPageSecurity] = "'ContactsComponent'">
+<p-messages [(value)]="msgs"  [closable]="false"></p-messages>
+</div>
+<div class="ui-g-12 accordion-wrapper">
+<p-accordion [multiple]="true">
+    <p-accordionTab header="Contact Information" [selected]="screenWidth>1100">
+            <div class="toggle">
+                    <button *ngIf="!tableflag" (click)="tableView()" >
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                   <!-- <button *ngIf="!tableflag"pButton type="button" label="Table view" (click)="tableView()" class="plus"></button>-->
+                   </button>
+            </div>
+            <div class="toggle">
+                <button *ngIf="cardflag" (click)="cardView()" >
+                    <i class="fa fa-th" aria-hidden="true"></i>
+                   <!-- <button *ngIf="cardflag"pButton type="button" label="Card view" (click)="cardView()" class="plus"></button>-->
+                </button>
+            </div>
+            <div  *ngIf="tableflag" class="ui-g">
+            <p-dataTable [value]="contacts" [rows]="10" [style]="{'margin-top':'20px','margin-bottom':'20px'}"  [responsive]="true" (onRowClick)="setContactDetails($event)">
+                    <p-column field="firstName" header="First Name" [sortable]="true" [style]="{'width':'16%','word-break' : 'break-all'}">
+                    </p-column>
+                    <p-column field="lastName" header="Last Name" [sortable]="true" [style]="{'width':'16%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="title" header="Title"  [style]="{'width':'9%','word-break' : 'break-all'}" [sortable]="true" > </p-column>
+                    <p-column field="companyName" header="Company Name" [sortable]="true" [style]="{'width':'19%', 'word-break' : 'break-all'}"></p-column>
+                    <p-column field="contactTypeValue" header="Contact Type" [sortable]="true"  [style]="{'width':'16%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="priority" header="Priority" [sortable]="true" [style]="{'width':'11%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="email" header="Email" [sortable]="true" [style]="{'width':'16%','word-break' : 'break-all'}"></p-column>
+                    <p-column field="primaryPhoneValue" header="Primary Phone" [sortable]="true" [style]="{'width':'19%','word-break' : 'break-all'}"></p-column>
+        
+                </p-dataTable>
+        
+                <button pButton type="button" label="+" (click)="onClick()" class="plus"  [lcFieldSecurity]="'createRateBtn'">
+                </button>
+            </div>
+        
+        <p-dataGrid *ngIf="!tableflag" [style]="{'margin-top':'20px','margin-bottom':'20px'}" [value]="contacts" [paginator]="true" [rows]="20">
+            
+            <p-header>
+                <div align="left">
+               Contact Information
+              <!--<button style=" background-color: black;color:white; float: right; padding: 0em 0em;"pButton type="submit" (click)="onClick()" label="+ Add New"></button>-->
+              <span style=" float: right;" (click)="onClick()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</span>
+            </div>
+            </p-header>
+            <ng-template let-contact pTemplate="item">
+                <div style="padding:3px" class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p-panel (click)="setContactDetails(contact)">
+                           <p-card>
+                          <p-header class="ui-g">
+                                            <div class="ui-g-12">
+                                            <b>{{contact.lastName}}</b>
+                                            </div> 
+                         </p-header>
+                               
+                        
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                            <b>First Name:</b> 
+                            <span>{{contact.firstName}}</span>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12  " >
+                            <b>Last Name:</b> 
+                            <span>{{contact.lastName}}</span>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12  ">
+                            <b>Title:</b> 
+                            <span>{{contact.title}}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                            <b>Company Name:</b> 
+                            <span>{{contact.companyName}}</span>
+                            </div>
+                        </div>
+                       
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                            <b>Contact Type:</b>
+                            <span>{{contact.contactTypeValue}}</span>
+                            </div>
+                        </div>
+                      
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                            <b>Priority:</b>
+                             <span>{{contact.priority}}</span>
+                             </div>
+                        </div>
+                       
+                        <div class="ui-g">
+                            <div class="ui-g-12  ">
+                            <b>Email:</b> 
+                            <span>{{contact.email}}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                            <b>Primary Phone:</b>
+                            <span>{{contact.primaryPhoneValue}}</span> 
+                            </div>
+                        </div>
+                    </p-card>
+                    </p-panel>
+
+                </div>
+            </ng-template>
+        </p-dataGrid>
+ 
+    </p-accordionTab>
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Back" class="cancel" (click)="onCancel()"></button>
+        </div>
+    </div>
+</p-accordion>
+</div>

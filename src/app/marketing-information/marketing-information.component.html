@@ -1,0 +1,67 @@
+<form [formGroup]="marketingFormdata" ngNativeValidate [lcPageSecurity] = "'MarketingInformationComponent'">
+
+ <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">
+  <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+ </div>
+
+ <div class="ui-g-12 accordion-wrapper">
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Marketing Information" [selected]="screenWidth>1100">
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+             
+              <label>Vertical Market</label>
+              <span  class="pull-right span asterixsign">*</span>
+            </div>
+            <div class="ui-g-8" style="height:40px">
+              <p-multiSelect [options]="verticalMarketList" optionLabel="elementValue" dataKey="elementId" placeholder="Select" formControlName="verticalMarket"></p-multiSelect>
+              <p-message *ngIf="marketingFormdata && marketingFormdata.controls.verticalMarket
+            && marketingFormdata.controls.verticalMarket.errors 
+            &&marketingFormdata.controls.verticalMarket.dirty" severity="error" text="Vertical Market is required"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>National Account</label>
+            </div>
+            <div class="ui-g-8">
+              <p-autoComplete [suggestions]="filteredNationalAccountArray" formControlName="nationalAccount" (completeMethod)="filterAccount($event)"
+                placeholder="Account Name" [minLength]="1" dataKey="elementId" field="elementValue" inputId="elementId" >
+                <!-- <ng-template let-account pTemplate="item">
+                  {{account}}
+                </ng-template> -->
+              </p-autoComplete>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Contract Number</label>
+            </div>
+            <div class="ui-g-8">
+              <input pInputText type="text" formControlName="contractorNumber" />
+            </div>
+          </div>
+        </div>
+
+    
+      </div>
+    </p-accordionTab>
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="cancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="saveMarketingInformation()" [lcFieldSecurity]="'saveMarketingInformationBtn'"></button>
+        </div>
+    </div>
+  </p-accordion>
+</div>
+</form>

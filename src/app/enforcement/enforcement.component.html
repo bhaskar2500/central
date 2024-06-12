@@ -1,0 +1,188 @@
+<form [formGroup]="enforcementFormdata" ngNativeValidate [lcPageSecurity] = "'enforcement'">
+    <div class="ui-g-12" style="height: 64px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px" >  
+        <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+        </div>
+        <div class="ui-g-12 accordion-wrapper">
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Enforcement Attributes" [selected]="screenWidth>1100">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12" style="padding: 0px 0px 0px 0px; height:30px;">
+            <div class="ui-g-4">
+              <label>Violations</label>
+            </div>
+            <div class="ui-g-8" style="margin-top:6px;">
+              <p-checkbox name="Violations" formControlName="violations" binary="true" ></p-checkbox>
+            </div>
+          </div>
+
+
+          <div class="ui-g-12" style="padding: 0px 0px 0px 0px; height: 30px;">
+            <div class="ui-g-4">
+              <label>Transient</label>
+            </div>
+            <div class="ui-g-8"  style="margin-top:6px;">
+              <p-checkbox name="Transient" formControlName="transient" binary="true"></p-checkbox>
+            </div>
+          </div>
+
+
+          <div class="ui-g-12" style="padding: 0px 0px 0px 0px; height: 30px;">
+            <div class="ui-g-4">
+              <label>Digital</label>
+            </div>
+            <div class="ui-g-8"  style="margin-top:6px;">
+              <p-checkbox name="Digital" formControlName="digital" binary="true"></p-checkbox>
+            </div>
+          </div>
+
+          <div class="ui-g-12" style="padding: 0px 0px 0px 0px; height: 30px;">
+            <div class="ui-g-4">
+              <label>Park Mobile</label>
+            </div>
+            <div class="ui-g-8"  style="margin-top:6px;">
+              <p-checkbox name="Digital" formControlName="parkMobile" binary="true"></p-checkbox>
+            </div>
+          </div>
+
+          <div class="ui-g-12" style="padding: 0px 0px 0px 0px; height: 30px;">
+            <div class="ui-g-4">
+              <label>Monthly Parker</label>
+            </div>
+            <div class="ui-g-8"  style="margin-top:6px;">
+              <p-checkbox name="Digital" formControlName="monthlyParker" binary="true"></p-checkbox>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Violations Website" [selected]="false">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Discount Amount ($)</label>
+            </div>
+            <div class="ui-g-8">
+              <input currencyMask [options]="{ prefix: '', decimal: '.', precision :'2', align :'left', allowZero: true }" style="width:100px;" maxlength="10"
+              class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ng-touched smallTextBox" formControlName="discountAmount"/>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label> Discount Redemption Period</label>
+            </div>
+            <div class="ui-g-8">
+              <p-inputMask mask="999" [autoClear]="false" slotChar=" " maxlength="3" formControlName="discountRedemptionPeriod" [style]="{'width':'50px'}"></p-inputMask>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label [lcFieldSecurity]="'daysBeforeSentLbl'" >Days before sent to collections</label>
+            </div>
+            <div class="ui-g-8">
+              <input pInputText type="text" class="read-only"  [lcFieldSecurity]="'daysBeforeSentTxt'" formControlName="daysBeforeCollections" style="width:50px;"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+
+
+    <p-accordionTab header="Violation Ticket Layout" [selected]="false" [lcFieldSecurity]="'violationTicketTab'">
+      <div class="ui-g"></div>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Ticket Title</label>
+            </div>
+            <div class="ui-g-8">
+              <textarea pInputTextarea [rows]="6" [cols]="22" pInputTextarea autoResize="autoResize" formControlName="ticketTitle"></textarea>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Ticket Header</label>
+            </div>
+            <div class="ui-g-8">
+              <textarea pInputTextarea [rows]="6" [cols]="22" pInputTextarea autoResize="autoResize" formControlName="ticketHeader"></textarea>
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Ticket Footer</label>
+            </div>
+            <div class="ui-g-8">
+              <textarea pInputTextarea [rows]="6" [cols]="22" pInputTextarea autoResize="autoResize" formControlName="ticketFooter"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Parking Fee Rates" [selected]="false">
+      <div class="ui-g">
+        <p-dataTable [value]="parkingFeeRatesData" [rows]="10" [responsive]="true"
+          (onRowClick)="parkingFeeDetails($event)">
+          <p-column field="rateDescription" header="Rate Description" [style]="{'width':'5%','word-break' : 'break-all'}">
+          </p-column>
+          <p-column field="rate" header="Rate" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+          <p-column field="publish" header="Publish" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+
+
+        </p-dataTable>
+
+
+        <button pButton type="button" label="+" (click)="onParkingClick()" class="plus">
+        </button>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Admin Fee Rates" [selected]="false">
+      <div class="ui-g">
+        <p-dataTable [value]="adminFeeRatesData" [rows]="10" [responsive]="true" (onRowClick)="adminFeeDetails($event)">
+          <p-column field="rateDescription" header="Rate Description" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+          <p-column field="rate" header="Rate" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+          <p-column field="publish" header="Publish" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+
+        </p-dataTable>
+
+        <button pButton type="button" label="+" (click)="onAdminClick()" class="plus">
+        </button>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Violation Fee Rates" [selected]="false">
+      <div class="ui-g">
+        <p-dataTable [value]="violationFeeRatesData" [rows]="10" [responsive]="true" (onRowClick)="violationFeeDetails($event)">
+          <p-column field="rateDescription" header="Rate Description" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+          <p-column field="rate" header="Rate" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+          <p-column field="publish" header="Publish" [style]="{'width':'5%','word-break' : 'break-all'}"></p-column>
+
+        </p-dataTable>
+
+        <button pButton type="button" label="+" (click)="onViolationClick()" class="plus">
+        </button>
+      </div>
+    </p-accordionTab>
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="submitEnforcement()" [lcFieldSecurity]="'saveEnforcementBtn'"></button>
+        </div>
+    </div>
+  </p-accordion>
+</div>
+</form>

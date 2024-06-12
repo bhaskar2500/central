@@ -1,0 +1,93 @@
+
+th,td>span {
+    font-weight: normal !important;
+}
+.ui-table .ui-sortable-column .ui-sortable-column-icon {
+    color: white;
+}
+.ui-table .ui-sortable-column.ui-state-highlight .ui-sortable-column-icon {
+    color: black;
+}
+.ui-table .ui-sortable-column:not(.ui-state-highlight):hover .ui-sortable-column-icon {
+    color: black;
+}
+.ui-table .ui-sortable-column.ui-state-highlight{
+    background-color: #d9d9d9;
+    color: black;
+}
+.rateTable{
+
+@media ( max-width: 35em ) {
+    tr.ui-widget-header.ng-star-inserted{
+        span.ui-column-title{
+            font-weight:bold !important;
+        }
+    }
+}
+    
+
+    @media screen and (max-width:768px) {
+        th{
+            font-size: 8px !important;
+        }
+        td{
+            font-size: 8px !important;
+        }
+    }
+    @media screen and (min-width:900px) {
+        th{
+            font-size: 9px !important;
+        }
+        td{
+            font-size: 9px !important;
+        }
+    }
+    @media screen and (min-width:980px) {
+        th{
+            font-size: 10px !important;
+        }
+        td{
+            font-size: 10px !important;
+        }
+    }
+    @media screen and (min-width:1185px) {
+        th{
+            font-size: 12px !important;
+        }
+        td{
+            font-size: 12px !important;
+        }
+    }
+    
+}
+.ui-datagrid .ui-datagrid-header {
+    background-color: black;
+    color:white;
+    font-weight: bold;
+}
+.ui-panel .ui-panel-content {
+    padding: 0em 0em; 
+}
+.ui-panel .ui-panel-titlebar {
+    padding: 0em 0em; 
+}
+.ui-widget-header {
+text-transform: none;
+
+}
+.ui-card.ui-widget.ui-widget-content.ui-corner-all{
+    .ui-card-header.ng-star-inserted{
+        background-color:#E90027;
+        color:white;
+         font-weight:bold;
+         height: 40px;
+         font-size:large;
+    }
+}
+.toggle{
+font-size: 25px;
+}
+
+p-panel.rate-card:first-child{
+    height: 100%;
+}

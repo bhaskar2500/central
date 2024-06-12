@@ -1,0 +1,161 @@
+.search-page{
+    font-size:20px;
+    $breakpoint: 799px;
+    min-width: 350px;
+    .black-box{
+        background-color:black !important;
+        height: 150px;
+        width: 100%;
+        padding-top: 42px;
+        padding-bottom: 40px;
+        padding-left: 28px;
+        padding-right: 28px;
+        border-radius: 0px;
+    }
+
+    .ui-button-icon-only .fa{
+        font-size: .65em;
+    }
+
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+        text-shadow: none !important;
+    }
+
+    label.ui-dropdown-label.ui-inputtext.ui-corner-all.ng-star-inserted{
+        font-weight:bold;
+         font-size:1em;
+         padding-left: 10px !important;
+         color: #5B5B5B !important;
+    }
+
+    .search-bar{
+        .ui-dropdown{
+            width: 12em;
+            font-size: 16px;
+            background-color:#F2F2F2 !important;
+            height:100%;
+            font-weight: 500;
+        }
+        .ui-dropdown .ui-dropdown-label {
+            background-color:#F2F2F2 !important;
+            color: black !important;
+            height: 50px !important;
+            padding-top: 18px !important;
+            padding-left: 10px;
+        }
+        .ui-dropdown-trigger.ui-state-default.ui-corner-right{
+            padding-top: 18px !important;
+            font-size: 1.5em;
+        }
+        .ui-dropdown .ui-dropdown-trigger {
+        background-color: #F2F2F2 !important;;
+        }
+
+        .ui-dropdown .ui-dropdown-trigger .fa{
+            padding-right: 10px !important;
+        }
+     
+    }
+    .ui-widget{
+        font-family: Montserrat,sans-serif !important
+    }
+    div.ui-inputgroup{
+        font-size:0.6em;
+    }
+    input.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+        width: 100%;
+        min-width:100px;
+        font-size: 1.8em;
+        height:65px;
+    }
+    .ui-widget-header .ui-button, .ui-widget-content .ui-button, .ui-widget.ui-button, .ui-button{
+        :hover{
+            background-color: #9b1f25;;
+            color: white; 
+            border-color: #9b1f25;
+            border-radius: 7px;
+        }
+    }
+     button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only{
+           background-color: #d13239;;
+            color: white; 
+            border-color: #9b1f25;
+           
+        &:hover{
+            background-color: #9b1f25;;
+            color: white; 
+            border-color: #9b1f25;
+            border-radius: 0;
+        }
+    }
+    .ui-dropdown-panel.ui-widget-content.ui-corner-all.ui-shadow.ng-trigger.ng-trigger-panelState {
+        z-index: 1;
+    }
+    @media screen and (max-width:$breakpoint/2){
+        .black-box{
+            margin-left:0px;
+            width:100%;
+        }
+        .logo-container{
+            margin-left:20%;
+        }
+        .form-container{
+            padding-right: 25px;
+        }
+        input{
+        padding: 12px 20px;
+        }
+    }
+    .new {
+        color:red !important;
+    }
+    .old {
+        color:green !important;
+    }
+}
+
+/* LOCATION SEARCH STYLING */
+
+.search-page .ui-widget {
+  font-weight: 500;
+}
+
+    .search-page{
+        .ui-dropdown .ui-dropdown-trigger .fa {
+            margin: 0;
+        }
+
+        .ui-dropdown.ui-widget.ui-state-default {
+            width: 150px;
+            border: none !important;
+            border-right: 1px solid #e6e6e6 !important;
+        }
+
+        input.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+            border: none !important;
+        }
+
+    }
+
+/* LOCATION SEARCH STYLING FOR MOBILE DEVICE */
+
+@media (max-width: 550px){
+        .search-page .search-bar .ui-dropdown {
+        font-size: 12px;
+    }
+
+    .search-page .ui-dropdown.ui-widget.ui-state-default{
+        width: 125px;
+    }
+
+    .search-page .ui-dropdown .ui-dropdown-trigger .fa {
+            margin-top: 4px;
+        }
+
+        .search-page input.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-autocomplete-input.ng-star-inserted{
+            font-size: 14px;
+        }
+
+}
+
+

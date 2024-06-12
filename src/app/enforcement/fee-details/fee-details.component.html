@@ -1,0 +1,68 @@
+<form [formGroup]="feeFormdata" ngNativeValidate>
+    <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">  
+        <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+        </div>
+
+  <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" [closable]="false"></p-confirmDialog>
+
+  <div class="ui-g-12 accordion-wrapper">
+  <p-accordion [multiple]="true">
+    <p-accordionTab header={{rateDetailsLegend}} [selected]="screenWidth>1100">
+      <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Active</label>
+            </div>
+            <div class="ui-g-8">
+              <p-checkbox name="Active" formControlName="active" binary="true" (onChange)="checkstate()"></p-checkbox>
+            </div>
+          </div>
+
+          <div class="`ui-g-12">
+            <div class="ui-g-4">
+              <label>Rate Description</label>
+            </div>
+            <div class="ui-g-8">
+              <input pInputText type="text" formControlName="rateDescription" />
+            </div>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label>Rate ($)</label>
+            </div>
+            <div class="ui-g-8">
+                <input currencyMask formControlName="rate" [options]="{ prefix: '', decimal: '.', precision :'2', align :'left', allowZero: true }" 
+                class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ng-touched" style="width:100px;" maxlength="10"/>
+              <!--<p-inputMask class="rateNumberField" mask="999.99" [autoClear]="false" slotChar=" " formControlName="rate"></p-inputMask>-->
+            </div>
+          </div>
+
+          <div class="ui-g-12">   
+            <div class="ui-g-4">
+              <label>Publish</label>
+            </div>
+            <div class="ui-g-8">
+              <p-checkbox name="Publish" formControlName="publish" binary="true"></p-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+    
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="saveFeeDetails()"></button>
+        </div>
+    </div>
+  </p-accordion>
+</div>
+</form>

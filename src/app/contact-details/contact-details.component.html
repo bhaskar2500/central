@@ -1,0 +1,303 @@
+<div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px"
+  [lcPageSecurity] = "'ContactDetailsComponent'" >
+  <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" [closable]="false"></p-confirmDialog>
+<div class="ui-g-12 accordion-wrapper">
+  <p-accordion [multiple]="true">
+
+    <p-accordionTab header="Contact Information" [selected]="screenWidth>1100">
+      <div class="ui-g">
+        <form [formGroup]="contactDetailsFormdata">
+          <div class="ui-g-12 ui-md-6 ui-md-6">
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Active</label>
+              </div>
+              <div class="ui-g-9">
+                <p-checkbox name="publishtoweb" formControlName="isActive" binary="true" (onChange)="checkstate()"></p-checkbox>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label> First Name</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                <input pInputText type="text" formControlName="firstName" />
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.firstName && contactDetailsFormdata.controls.firstName.errors && contactDetailsFormdata.controls.firstName.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label>Last Name</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                <input pInputText type="text" formControlName="lastName" />
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.lastName && contactDetailsFormdata.controls.lastName.errors && contactDetailsFormdata.controls.lastName.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Title</label>
+              </div>
+              <div class="ui-g-9">
+                <input pInputText type="text" formControlName="title" />
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label> Email</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                <input pInputText type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.email
+                && contactDetailsFormdata.controls.email.errors && contactDetailsFormdata.controls.email.dirty
+                && contactDetailsFormdata.controls.email.errors.pattern" severity="error" text="Invalid email pattern"></p-message>
+                <p-message *ngIf="contactDetailsFormdata 
+                && contactDetailsFormdata.controls.email 
+                && contactDetailsFormdata.controls.email.dirty 
+                && contactDetailsFormdata.controls.email.errors  
+                && contactDetailsFormdata.controls.email.errors.required" severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label>Primary Phone</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9">
+                <p-inputMask [autoClear]="false" mask="(999)-999-9999" formControlName="primaryPhone"></p-inputMask>
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.primaryPhone && contactDetailsFormdata.controls.primaryPhone.errors && contactDetailsFormdata.controls.primaryPhone.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Cell Phone</label>
+              </div>
+              <div class="ui-g-9">
+                <p-inputMask [autoClear]="false" mask="(999)-999-9999" formControlName="cellPhone"></p-inputMask>
+              </div>
+            </div>
+
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label>Contact Type</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                <p-dropdown [options]="contacttypeList" [autoWidth]="false" placeholder="Select" optionLabel="elementValue" dataKey="elementId"
+                  formControlName="contactType"></p-dropdown>
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.contactType && contactDetailsFormdata.controls.contactType.errors && contactDetailsFormdata.controls.contactType.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label>Contact Priority</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                  <i class="fa fa-question-circle-o" pTooltip="Priority 1 designates the first point of contact, 2 designates the second etc."
+                  aria-hidden="true" *ngIf="isCanadaState"></i>
+                <p-inputMask [autoClear]="false" mask="99" [style]="{'width':'50px'}" formControlName="priority" slotChar=" "></p-inputMask>
+                <p-message *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.priority && contactDetailsFormdata.controls.priority.errors && contactDetailsFormdata.controls.priority.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Company</label>
+              </div>
+              <div class="ui-g-9">
+                <p-autoComplete [suggestions]="filteredCompanyArray" formControlName="company" (completeMethod)="filterCompanySingle($event)"
+                  placeholder="Company Name" [minLength]="3" dataKey="elementId" field="elementValue" inputId="elementId">
+                  <!-- <ng-template let-company pTemplate="item">
+                  {{company.elementValue}}
+                </ng-template> -->
+                </p-autoComplete>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Website</label>
+              </div>
+              <div class="ui-g-9" style="height: 40px">
+                <input pInputText type="text" formControlName="website" pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
+                />
+                <p-message class="ui-g-12" *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.website
+      && contactDetailsFormdata.controls.website.errors 
+      && contactDetailsFormdata.controls.website.errors.pattern" severity="error" text="Invalid website pattern"></p-message>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Available Hours" [selected]="false">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-3">
+              <label> Do Not Contact </label>
+            </div>
+            <div class="ui-g-9">
+              <p-checkbox name="donotcontact" [(ngModel)]="doNotcontact" binary="true"></p-checkbox>
+            </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-12 ui-md-7 ui-lg-5" >
+            <p-table id="myTable" [value]="hoursOfOperation" [hidden]="doNotcontact" [responsive]="true">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style=" width:25%; word-break:break-all">Day
+                  </th>
+                  <th style=" width:15%; word-break:break-all">Not<br/> Available
+                  </th>
+                  <th style=" width:25%; word-break:break-all">Start Time
+                  </th>
+                  <th style=" width:25%; word-break:break-all">End Time
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr class="ui-widget-header" [pSelectableRow]="rowData">
+                  <td>
+                    <span class="ui-column-title">Day</span>
+                    <span>{{rowData.name }}</span>
+                  </td>
+                  <td>
+                    <span class="ui-column-title">Not Available</span>
+                    <p-checkbox name="notAvailable" binary="true" [(ngModel)]="rowData.isAvailable">
+                    </p-checkbox>
+                  </td>
+                  <td>
+                    <span class="ui-column-title">Start Time</span>
+                    <p-dropdown [(ngModel)]="rowData.startTime" [options]="openTime" [style]="{'width':'90px'}" placeholder="Select" float="left"
+                      [disabled]="rowData.isAvailable"></p-dropdown>
+                  </td>
+                  <td>
+                    <span class="ui-column-title">End Time</span>
+                    <p-dropdown [(ngModel)]="rowData.endTime" [options]="closeTime" [style]="{'width':'90px'}" placeholder="Select" [disabled]="rowData.isAvailable"></p-dropdown>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+
+        </div>
+
+      </div>
+
+    </p-accordionTab>
+
+    <p-accordionTab header="Contact Address" [selected]="false">
+      <form [formGroup]="contactDetailsFormdata">
+
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Address 1</label>
+              </div>
+              <div class="ui-g-9">
+                <textarea pInputTextarea [rows]="6" [cols]="22" formControlName="address1" class="textareaAddress" autoResize="autoResize"></textarea>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Address 2</label>
+              </div>
+              <div class="ui-g-9">
+                <textarea pInputTextarea [rows]="6" [cols]="22" formControlName="address2" class="textareaAddress" autoResize="autoResize"></textarea>
+
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>City</label>
+              </div>
+              <div class="ui-g-9">
+                <input pInputText type="text" formControlName="city" />
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>State / Province</label>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="statesList" [autoWidth]="false" formControlName="state" placeholder="Select" group="true" (onChange)="stateChanged($event)"></p-dropdown>
+              </div>
+            </div>
+
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Zip Code/ Postal Code</label>
+              </div>
+              <div class="ui-g-9">
+
+                <p-inputMask mask="a9a9a9" formControlName="zip" [autoClear]="false" slotChar=" " *ngIf="isCanadaState"></p-inputMask>
+                <p-inputMask mask="99999" formControlName="zip" [autoClear]="false" slotChar=" " *ngIf="!isCanadaState"></p-inputMask>
+
+                <i class="fa fa-question-circle-o" pTooltip="For Canada Provinces please enter Postal code in the format:  'ananan' Here a means alphabet and n means numeric"
+                  aria-hidden="true" *ngIf="isCanadaState"></i>
+                <i class="fa fa-question-circle-o" pTooltip="For USA States / Territories please enter ZIP code in the format: 'nnnnn'. Here n means numeric"
+                  aria-hidden="true" *ngIf="!isCanadaState"></i>
+                <p-message class="ui-g-12" *ngIf="contactDetailsFormdata && contactDetailsFormdata.controls.zip && contactDetailsFormdata.controls.zip.errors && contactDetailsFormdata.controls.zip.dirty"
+                  severity="error" text="Please enter value for Zip Code"></p-message>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </p-accordionTab>
+
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="onSubmit()" [lcFieldSecurity]="'saveContactDetailsBtn'"></button>
+        </div>
+    </div>
+  </p-accordion>
+</div>

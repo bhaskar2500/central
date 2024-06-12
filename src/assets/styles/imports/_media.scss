@@ -1,0 +1,252 @@
+@media (min-width: 768px) {
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 $sidebar-width;
+    min-height: 100vh;
+  }
+
+  .navbar-static-side {
+    z-index: 2001;
+    position: absolute;
+    width: $sidebar-width;
+  }
+
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+  
+}
+
+@media (max-width: 768px) {
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 0;
+    min-height: 100vh;
+  }
+
+  .body-small .navbar-static-side {
+    display: none;
+    z-index: 2001;
+    position: absolute;
+    width: 70px;
+  }
+
+  .body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+
+  .lock-word {
+    display: none;
+  }
+
+  .navbar-form-custom {
+    display: none;
+  }
+
+  .navbar-header {
+    display: inline;
+    float: right;
+  }
+
+  .sidebar-panel {
+    z-index: 2;
+    position: relative;
+    width: auto;
+    min-height: 100% !important;
+  }
+
+  .sidebar-content .wrapper {
+    padding-right: 0;
+    z-index: 1;
+  }
+
+  .fixed-sidebar.body-small .navbar-static-side {
+    display: none;
+    z-index: 2001;
+    position: fixed;
+    width: $sidebar-width;
+  }
+
+  .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+
+  .ibox-tools {
+    float: none;
+    text-align: right;
+    display: block;
+  }
+
+  .navbar-static-side { display: none; }
+
+  body:not(.mini-navbar) {
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+    background-color: #f3f3f4
+  }
+
+  .selectedLocation
+    {
+      font-size: 14px !important;
+     
+    }
+    .headerLabel
+    {
+      padding-top: 91px;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+  .timeline-item .date {
+    text-align: left;
+    width: 110px;
+    position: relative;
+    padding-top: 30px;
+  }
+
+  .timeline-item .date i {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    border: 1px solid $border-color;
+    background: #f8f8f8;
+  }
+
+  .timeline-item .content {
+    border-left: none;
+    border-top: 1px solid $border-color;
+    padding-top: 10px;
+    min-height: 100px;
+  }
+
+  .nav.navbar-top-links li.dropdown {
+    display: none;
+  }
+
+  .ibox-tools {
+    float: none;
+    text-align: left;
+    display: inline-block;
+  }
+  
+}
+
+.topnav.responsive{
+  width: 300px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  display:block;
+  z-index:2;
+}
+
+.topnav.responsive a {
+  background-color:white;
+  float: none;
+  text-align: left;
+  display:block;
+  font-family: "Montserrat";
+  color: black;
+  font-weight:200;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  }
+
+.topnav {
+	overflow: hidden;
+  display: none;
+  box-shadow: grey -1px 1px;
+  }
+
+
+div.icon{
+  cursor: pointer !important;
+  pointer-events: all !important;
+  display:inline ;
+  float:right;
+  border-radius:50%;
+  width:30px;
+  background-color:grey;
+  text-align:center;
+}
+a.logOut{
+  background-color:#EEEEEE !important;
+  color: red !important;
+  font-style:italic;
+  font-weight: bold !important;
+  text-align:center !important ;
+}
+
+.search{
+  color:red; 
+  float:left;
+  margin-top:16px;
+  font-size:24px;
+}
+.selectedLocation{
+  font-family: Montserrat, sans-serif;
+	font-size: 24px;
+  color: #E90027;
+  font-weight:bold;
+  
+  &:visited{
+    color: #E90027;
+  }
+}
+
+.headerLabel
+{
+  padding-top: 55px;
+  background: #fff;
+   max-width: 100%;
+}
+.hamburger{
+  color:grey !important;
+  font-size: 20px !important;
+}
+.appTtitleLabel{
+  font-size: 20px !important;
+  margin-top: 20px;
+  margin-left: 30px;
+  font-weight: bold;
+}
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+  border-bottom:1px solid grey;
+}
+.hamburgerHeader{
+  float:right;
+  top: 0;
+  right: 0;
+  position:absolute;
+}
+
+  @media (max-width: 530px) {
+    span.appTtitleLabel{
+	  text-align:center;
+      display: block;
+      font-size: 14px !important;
+    }
+    .selectedLocation
+    {
+      font-size: 14px !important;
+     
+    }
+    .headerLabel
+    {
+      padding-top: 91px;
+    }
+}

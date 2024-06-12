@@ -1,0 +1,44 @@
+<div class="ui-g-12 mainBox" [hidden]="(menuSchema=='login') || (menuSchema =='loadingLogin') ">
+  <div class="ui-g-4" style="padding:0px;">
+    <div class="ui-g-2">
+      <img [src]="logoPath">
+    </div>
+    <label class="appTtitleLabel"> MY SPOT - {{ headerName }}</label>
+  </div>
+
+  <div id="locationDetails" style="padding:0px">
+    <div class="headerNavBox">
+      <button pButton type="button" class="iconStyles" icon="fas fa-power-off" pTooltip="Logout" (click)="logOut()" iconPos="left"></button>
+      <label style="float:none"> {{ currentUser.networkId }}
+      </label>
+      <button pButton type="button" pTooltip="View AnotherLocation" class="iconStyles"
+        icon="fas fa-home" routerLink="/lc/locationSearch" iconPos="left"></button>
+    </div>
+    <div [hidden]="!(menuSchema=='location')" class="headerLocDetails">
+      <input class="textLabel" style="text-align:right" type="text" size="5" [value]="selectedLocation ? selectedLocation.locationCode+'   - ' :' - ' " disabled>
+      <input type="text" class="textLabel" size="20" [value]="selectedLocation && selectedLocation.primaryAddress ? selectedLocation.primaryAddress.address1:'' "
+        disabled>
+    </div>
+
+    <div [hidden]="!(menuSchema=='locationSearch')" class="headerButtons">
+      <button class="channelMgmt ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" (click)="onSubmit()" pButton
+        type="submit" label="Reference Table Management"></button>
+
+      <button class="channelMgmt ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" (click)="onClick()" pButton
+        type="submit" label="Channel Management"></button>
+    </div>
+  </div>
+</div>
+
+<div class="topnav" id="myTopnav">
+  <a href="javascript:void(0);" (click)="onHamburgerMenuClick()" class="icon">
+        
+    <i class="{{ icon }}"></i>
+  </a>
+  <a style="background-color: #d13239; color:white;">{{ currentUser.networkId }}</a>
+  <a *ngIf="!(menuSchema=='locationSearch')" routerLink="/lc/locationSearch">Home</a>
+  <a *ngIf="(menuSchema=='locationSearch')" routerLink="/lc/channelManagement">Channel Management</a>
+  <a *ngIf="(menuSchema=='locationSearch')" routerLink="/lc/referenceTableManagement">Reference Table Management</a>
+  <a href="javascript:void(0);" (click)="logOut()">Logout</a>
+
+</div>

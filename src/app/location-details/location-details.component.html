@@ -1,0 +1,97 @@
+
+
+<div class="middle-box no-padding" style="text-align: center;" [lcPageSecurity]="'LocationDetailsComponent'">
+
+	<div class="ui-g-12 mobile-pad">
+			<div [lcFieldSecurity]="'LOD_FeaturesCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div>
+					<p-header  (click)="onFeaturesClick()">
+							<i class="location-icons fa fa-star" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header"  (click)="onFeaturesClick()">FEATURES</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_CapacityCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onCapacityClick()">
+						<i class="location-icons fa fa-arrows" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onCapacityClick()">CAPACITY</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_ContactsCard'"  class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onContactsClick()">
+						<i class="location-icons fa fa-address-book-o" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onContactsClick()">CONTACTS</p>
+				</div>
+			</div>
+
+			<div  [lcFieldSecurity]="'LOD_OperationalCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onOperationalClick()">
+						<i class="location-icons fa fa-cog" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onOperationalClick()">OPERATIONAL</p>
+
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_NotesCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onNotesClick()">
+						<i class="location-icons fa fa-pencil" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onNotesClick()">NOTES</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_MarketingCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onMarketingClick()">
+						<i class="location-icons fa fa-bullhorn" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onMarketingClick()">MARKETING</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_EnforcementCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onEnforcementClick()">
+						<i class="location-icons fa fa-gavel" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onEnforcementClick()">ENFORCEMENT</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_RatesCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onRatesClick()">
+						<i class="location-icons fa fa-money" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onRatesClick()">RATES</p>
+				</div>
+			</div>
+
+			<div [lcFieldSecurity]="'LOD_MerchantIdCard'" class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onMerchantIDDataClick()">
+						<i class="location-icons fa fa-area-chart" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onMerchantIDDataClick()">MERCHANT ID <br> DATA</p>
+				</div>
+			</div>
+			<div *ngIf="showOccupanyReset" [lcFieldSecurity]="'LOD_OccupancyResetCard'"  class="ui-g-4 ui-md-4 ui-lg-4" >
+				<div >
+					<p-header (click)="onOccupancyClick()">
+						<i class="location-icons fa fa-random" aria-hidden="true"></i>
+					</p-header>
+					<p class="menu-header" (click)="onOccupancyClick()">OCCUPANCY RESET</p>
+				</div>
+			</div>
+	</div>
+	
+</div>

@@ -1,0 +1,159 @@
+<form [formGroup]="capacityFormdata" ngNativeValidate [lcPageSecurity]="'CapacityComponent'">
+  <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+  </div>
+
+  <div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Capacity Information" [selected]="screenWidth>1100">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label> Contracted Capacity</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <p-inputMask class="numberField" mask="999999" [autoClear]="false" slotChar=" " size="4" formControlName="contractedCapacity"
+                disabled="true"></p-inputMask>
+              <i class="fa fa-question-circle-o" pTooltip="Designates the # of spaces from LMS" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label> Working Capacity</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <p-inputMask class="numberField" mask="999999" [autoClear]="false" slotChar=" " size="4" formControlName="workingCapacity"></p-inputMask>
+              <i class="fa fa-question-circle-o" pTooltip="Enter the number of total available spaces" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-6 table-grey">
+            <p-table [value]="capacityControlIDs" [responsive]="true">
+              <ng-template pTemplate="header" let-columns>
+                <tr>
+                  <th> Restricted Spaces
+                  </th>
+                  <th> From
+                    <i class="fa fa-question-circle-o" pTooltip=""
+                      aria-hidden="true"></i>
+                  </th>
+                  <th> To
+                    <i class="fa fa-question-circle-o" pTooltip=""
+                      aria-hidden="true" ></i>
+                  </th>
+                  <th> # of Spaces
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-index>
+                <tr>
+                  <td>
+                    <input pInputText style="display: none" formControlName="locationCapacityTypeKey{{rowData}}" />
+
+                    <span class="ui-column-title">Restricted Spaces</span>
+                    <p-dropdown [style]="{'width':'100px'}" placeholder="Select Capacity" [options]="ddRestrictedSpaces" optionLabel="elementValue"
+                      dataKey="elementId" formControlName="capacityType{{rowData}}"></p-dropdown>
+                    <i style="cursor: pointer;" (click)="showDialog(rowData)" pTooltip="Add a Note" class="fa fa-sticky-note"></i>
+                    <p-dialog header="Add a Note" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"
+                      [baseZIndex]="10000">
+                      <div *ngFor="let id of capacityControlIDs">
+                        <input pInputText *ngIf="id==noteIDToBeSaved" formControlName="notes{{id}}" />
+                      </div>
+                      <p-footer>
+                        <button type="button" pButton icon="pi pi-check" label="Cancel" (click)="rejectNewNote('notes'+rowData)"></button>
+                        <button type="button" pButton icon="pi pi-times" label="Add" (click)="addNewNote()"></button>
+                      </p-footer>
+                    </p-dialog>
+                  </td>
+                  <td>
+                    <span class="ui-column-title">From</span>
+                    <p-calendar   [style]="{'font-size':'9px'}" [showOtherMonths] = "false" placeholder="Select Date" class="dateField" [minDate]="minDateValue" dateFormat="mm/dd/y" utc="true" formControlName="fromTime{{rowData}}"
+                      icon="fa-calendar" showIcon="true" readonlyInput="true" showButtonBar="true"></p-calendar>
+                  </td>
+                  <td>
+                    <span class="ui-column-title">To</span>
+                    <p-calendar  [style]="{'font-size':'9px'}" [showOtherMonths] = "false"  placeholder="Select Date"class="dateField" [minDate]="minDateValue" dateFormat="mm/dd/y" utc="true" formControlName="toTime{{rowData}}"
+                      icon="fa-calendar" showIcon="true" readonlyInput="true" showButtonBar="true"></p-calendar>
+                  </td>
+                  <td>
+                    <span class="ui-column-title"># of Spaces</span>
+                    <p-inputMask class="numberField" mask="999999" [style]="{'margin-left':'3px'}" [autoClear]="false" slotChar=" " size="4"
+                      formControlName="spaceNumber{{rowData}}"></p-inputMask>
+                    <span id='close' class="fa fa-close" (click)='removeRestrictedSpace(rowData);' pTooltip="You are about to delete the capacity"></span>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+                <div class="ui-g-12">
+                  <div class="ui-g-3 ui-md-3 ui-lg-1">
+                    <button class="plus" style="margin-left: 15px;" pButton type="submit" (click)="addNewSpace()" label="+" [disabled]='isDisabled()'></button>
+                  </div>
+                  <div class="ui-g-3 ui-md-6 ui-lg-8">
+                    <label style="text-transform:none"> Total Restricted Spaces</label>
+                  </div>
+                  <div class="ui-g-4 ui-md-3 ui-lg-3">
+                    <input type="number" formControlName="totalRestrictedSpaces" disabled="true" style="width:50px!important;height:30px!important;float:left; margin-left:8px"
+                    />
+                  </div>
+                </div>
+              </ng-template>
+            </p-table>
+
+          </div>
+
+          <!-- <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label style="font-weight:normal"> No Show</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <p-inputMask class="numberField" mask="999999" [autoClear]="false" slotChar=" " size="4" formControlName="oversell"></p-inputMask>
+              <i class="fa fa-question-circle-o" pTooltip="Oversell # of spaces is substracted from Total Restricted Spaces and calculated in the Available Spaces"
+                aria-hidden="true"></i>
+            </div>
+          </div> -->
+          <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label style="font-weight:normal"> Stop Sell (%)</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <p-inputMask class="numberField" mask="999999" [autoClear]="false" slotChar=" " size="4" formControlName="stopsell"></p-inputMask>
+              <i class="fa fa-question-circle-o" pTooltip="Enter the % remaining spaces to cease online selling
+                  through Channel Partners. This will be the remaining
+                  % of spaces for driveup business and not available for online selling" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label style="font-weight:normal"> Stop Sell (#)</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <input type="number" formControlName="stopsellCount" disabled="true" style="width:50px!important;height:30px!important" />
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-12 ui-lg-9">
+            <div class="ui-g-6 ui-md-9 ui-lg-6">
+              <label> Available</label>
+            </div>
+            <div class="ui-g-4 ui-md-3 ui-lg-6">
+              <!--<p-inputMask class="numberField" mask="99999" [autoClear]="false" slotChar=" " size="4" formControlName="available" disabled="true"></p-inputMask>-->
+              <input type="number" formControlName="available" disabled="true" style="width:50px!important;height:30px!important" />
+              <i class="fa fa-question-circle-o" pTooltip="Represents the number of spaces available for
+                  online selling" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+
+      <div class="buttonContainer">
+          <div>
+              <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+          </div>
+
+          <div>
+              <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+              <button pButton type="submit" label="Save" class="primary" (click)="saveCapacity()" [lcFieldSecurity]="'saveCapacityBtn'"></button>
+          </div>
+      </div>
+    </p-accordion>
+  </div>
+  <form>

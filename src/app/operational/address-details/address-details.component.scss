@@ -1,0 +1,30 @@
+.span{
+    color:red;
+}
+
+@media screen and (max-width:375px) {
+    .asterixsign
+    {
+    margin-right: 59px;
+    margin-top: -33px;
+    }
+    .asterix
+    {
+        margin-right: 38px;
+        margin-top: -34px;
+    }
+}
+
+@media (min-width: 414px) and (max-width: 480px)
+{
+    .asterixsign
+    {
+        margin-right: 95px;
+    margin-top: -34px;
+    }
+    .asterix
+    {
+        margin-right: 90px;
+        margin-top: -22px;
+    }  
+}

@@ -1,0 +1,47 @@
+<form [formGroup]="notesFormdata" ngNativeValidate [lcPageSecurity] = "'NotesComponent'">
+	<div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 939px ; margin-left: 8px">
+		<p-messages [(value)]="msgs" [closable]="false"></p-messages>
+	</div>
+
+	<div class="ui-g-12 accordion-wrapper">
+		<p-accordion [multiple]="true">
+			<p-accordionTab header="Notes" [selected]="screenWidth>1100">
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-10 ui-lg-8">
+						<div class="ui-g-12" id="notesDiv{{id}}" *ngFor="let id of notesDiv">
+							<div class="ui-g-12 ui-md-5 ui-lg-4">
+								<span class="span asterixsign">*</span>
+								<p-dropdown [options]="noteTypes" [style]="{'max-width':'80%','margin-left':'1px','float':'left'}" placeholder="Select Note Type" optionLabel="elementValue"
+								 dataKey="elementId" formControlName="notesDd{{id}}" [autoWidth]="false"></p-dropdown>
+								<i class="fa fa-question-circle-o" pTooltip="Enter location specific notes that are visible by the Contact Center for assisting customers who call or email the Contact Center. Provide detailed notes here."></i>
+							</div>
+							<div class="ui-g-12 ui-md-7 ui-lg-6" >
+								<span class="span asterixsign">*</span>
+								<textarea [rows]="6" [cols]="22" style="margin-left: 2px;max-width:80%;" pInputTextarea autoResize="autoResize" formControlName="notesDesc{{id}}"></textarea>
+								<span id='close' class="fa fa-close" (click)='removeNotes(id)' pTooltip="You are about to delete the note" [lcFieldSecurity]="'removeNotesBtn'"></span>
+								<p-message *ngIf="notesFormdata && notesFormdata.controls['notesDesc'+[id]] 
+            && notesFormdata.controls['notesDesc'+[id]].errors
+            && notesFormdata.controls['notesDesc'+[id]].dirty" severity="error" text="Field is required"></p-message>
+							</div>
+						</div>
+					</div>
+					<div class="ui-g-12 ">
+							<button class="plus" style="margin-left: 15px;" pButton type="submit" (click)="addNoteDetails()" label="+"  [lcFieldSecurity]="'addNotesBtn'"></button>
+						</div>
+				</div>
+
+			</p-accordionTab>
+		</p-accordion>
+	</div>
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="showError(); saveNotes();" [lcFieldSecurity]="'saveNotesBtn'"></button>
+        </div>
+    </div>
+</form>

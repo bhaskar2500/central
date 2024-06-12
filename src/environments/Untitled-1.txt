@@ -1,0 +1,11 @@
+
+
+
+check swagger for the endppoint 
+
+If not there add new one .
+
+
+
+/locations/get-location/{locCode}
+/locations/get-opscenter/{OpsCenter}

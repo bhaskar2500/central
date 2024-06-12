@@ -1,0 +1,83 @@
+.cont{
+  font-size:11px;
+  background-color:rgba(228, 228, 228, 1);
+  max-width: 1200px;
+}
+.ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tfoot>tr>td, .ui-datatable .ui-datatable-data>tr>td {
+  border-color:1px  gray;
+  font-weight: 600;
+  height: 12px;
+}
+.container{
+  width: 100%;
+}
+// input.ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+//   width: 102px;
+// }
+.ui-widget-header {
+  text-transform: none;
+  
+  }
+  .ui-datagrid .ui-datagrid-header {
+    background-color: black;
+    color:white;
+    font-weight: bold;
+}
+.ui-panel .ui-panel-content {
+    padding: 0em 0em; 
+}
+.ui-panel .ui-panel-titlebar {
+    padding: 0em 0em; 
+}
+  .ui-card.ui-widget.ui-widget-content.ui-corner-all{
+      .ui-card-header.ng-star-inserted{
+          background-color:#E90027;
+          color:white;
+           font-weight:bold;
+           height: 40px;
+           font-size:large;
+      }
+  }
+.toggle{
+  font-size: 25px;
+}
+p-datagrid{
+  width:100%
+}
+.addSpaces{
+  margin-left:6px;
+}
+.new {
+  color: green;
+  width:21px;
+  font-size:14px;
+}
+
+.new.list-view{
+  position: absolute;
+  left: 35px;
+}
+
+span.ui-row-toggler.fa.fa-fw.ui-clickable.fa-chevron-circle-right,span.ui-row-toggler.fa.fa-fw.ui-clickable.fa-chevron-circle-down{
+  font-size:18px !important;
+}
+.old {
+  color: red;
+  width:21px;
+  font-size:12px;
+}
+
+.ui-widget.ui-datagrid{
+    font-size:14px
+}
+
+.results-header{
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+
+.toggle.ng-star-inserted{
+    float: left;
+}
+

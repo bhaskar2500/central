@@ -1,0 +1,6 @@
+applications:
+- name: SPPlusLocationUI
+memory: 256M
+command: node server.js
+path: ./dist/
+buildpack: https://github.com/cloudfoundry/nodejs-buildpack

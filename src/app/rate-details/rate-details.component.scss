@@ -1,0 +1,80 @@
+.commonBorder{
+  max-width:70%;
+  margin-left:7px;
+  padding:4px;
+  border: 1px solid black;
+  border-radius: 10px;
+  
+}
+.labelLeftAlignment{
+  float:left;
+}
+.tooltip{
+  width: 17px;
+  height: 17px;
+  float: right;
+  padding: 0px;
+}
+.labelPaymentOption{
+  font-weight: normal;
+}
+.span{
+  color:red;
+ 
+}
+
+
+
+p-calendar.ng-dirty.ng-invalid > .ui-calendar > .ui-inputtext{
+  border-bottom-color: #f44336 !important;
+}
+
+
+@media screen and (max-width:375px){
+  // .ui-dropdown.ui-widget.ui-state-default.ui-corner-all.ui-helper-clearfix{
+  //   width: 84px !important;
+  // }
+}
+
+.dateField{
+    margin-right: 28px;
+    .ui-accordion-content.ui-widget-content, .ui-inputtext.ui-corner-all.ui-state-default.ui-widget{
+        width:140px!important;
+    }
+    
+    .ui-widget-header .ui-button, .ui-widget-content .ui-button, .ui-widget.ui-button{
+        color:gray;
+        background:lightgray;
+        border: 1px solid grey;
+        border-left: 0 none;
+        &:hover{
+            color:white;
+            background:lightgray;
+            border: 1px solid grey;
+            border-left: 0 none;
+        }
+    }
+
+    
+  .ui-datepicker-header.ui-widget-header {
+    text-align: center;
+    background-color: lightgrey !important;
+    font-weight: bold;
+    color: white;
+    width: 208px !important;
+  }
+  .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-shadow.ng-trigger.ng-trigger-overlayState {
+    width: 208px !important;
+  }
+}
+
+.ng-tns-c6-2.ui-dropdown-panel.ui-widget-content.ui-corner-all.ui-shadow.ng-trigger.ng-trigger-panelState {
+  left: -1px !important;
+}
+.ng-tns-c6-3.ui-dropdown-panel.ui-widget-content.ui-corner-all.ui-shadow.ng-trigger.ng-trigger-panelState{
+  left: -1px !important;
+}
+@media screen and (max-width:375px) , (max-width:320px)  ,(max-width:550px) , (min-width:550px){
+
+  
+}

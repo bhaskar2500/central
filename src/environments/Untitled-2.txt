@@ -1,0 +1,18 @@
+1.  remove NOT NEW , leave blank --Done
+2.  remove sort icon for the status field --Done
+4.  add logic to switch to cards view on responsive mode [choose ipad dimentions for switching] --Done
+5.  remove the New rules in CARDS --Done
+6.  add a new field in CARDS called ["Location Status: " NEW/OLD] --Done
+
+Rates Screen:
+9. Fix the Table column, widths and sorting icons.  --Done For Rates only
+10.  add logic to switch to cards view on responsive mode [ choose ipad dimentions for switching] --Done
+Contacts Screen:
+11. add logic to switch to cards view on responsive mode [choose ipad dimentions for switching]--Done
+
+
+Location Feed API:
+7. write individual queries for locations, addresses, contacts, hours of opertaions and then run a loop to attach the data to the corresponding location [refer to the /inventories under External API for reference]
+8. add logic for Update, Insert and Both
+Update needs to look for all the dependent tables, contacts, rates, addresses, payment options, enforcement, images, location_facility_type, location_capacity_type, fee_details, occupancy_reset, notes, etc
+3.  add missing logic for hours of operation in new calculation 

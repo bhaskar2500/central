@@ -1,0 +1,35 @@
+export class Rate{
+    rateKey : Number;
+    rateCategoryKey : Number;
+    locationKey : Number;
+    isActive : boolean;
+    isAddOn : boolean;
+    isCombinable : boolean;
+    isNonRefundable :boolean;
+    productName : String;
+    monActive : boolean;
+    tueActive : boolean;
+    wedActive : boolean;
+    thuActive : boolean;
+    friActive : boolean;
+    satActive : boolean;
+    sunActive : boolean;
+    price : Number;
+    dailyMaxPrice : Number;
+    additionalHours : Number;
+    activeStartDate : Date;
+    activeEndDate : Date;
+    rateTypeKey : Number;
+    incrementKey : Number;
+    maxHoursKey : Number;
+    createdBy : String;
+    createdOn : any;
+    lastUpdatedBy : String;
+    lastUpdatedOn : any;
+    deletedBy : String;
+    deletedOn : any;
+    entryStartTime : any;
+    entryEndTime : any;
+    exitStartTime : any;
+    exitEndTime : any;
+    }

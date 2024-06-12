@@ -1,0 +1,15 @@
+.span{
+    color:red;
+    float: left;
+    font-size:11px;
+}
+
+
+@media screen and (max-width: 900px) {
+.resizeDropDown{ width:100% }
+}
+#close {
+    vertical-align :top;
+    color:#d13239;
+    cursor:pointer;
+}

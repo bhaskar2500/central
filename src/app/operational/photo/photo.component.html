@@ -1,0 +1,78 @@
+<form [formGroup]="photoFormData" ngNativeValidate>
+        <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 98% ; margin-left: 8px">
+                <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+         </div>
+
+<div class="ui-g-12 accordion-wrapper">    
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Photograph" [selected]="screenWidth>1100">
+      <div class="ui-g">
+      <div class="ui-g-6">
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Image Name </label>
+              </div>
+              <div class="ui-g-8">
+                  <input pInputText type="text" formControlName="imageName" maxlength="50" />
+              </div>
+          </div>
+
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Upload File</label>
+              </div>
+              <div class="ui-g-4" style="padding-right:0px;">
+                  <input pInputText type="text" formControlName="uploadFile" maxlength="50" disabled="true" class="pull-left"/>
+              </div> 
+              <div class="ui-g-4" style="padding-left:0px;">
+                   <p-fileUpload mode="basic" multiple=false auto="false" 
+                                 accept="image/*" (onSelect)="onBasicUpload($event)" 
+                                 maxFileSize="1000000" auto=true 
+                                 class="pull-right"></p-fileUpload>
+              </div>
+          </div>
+
+
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Image Size</label>
+              </div>
+              <div class="ui-g-8">
+                  <input pInputText type="text" formControlName="imageSize" maxlength="50" disabled="true"/>
+              </div>
+          </div>
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Image Dimensions</label>
+              </div>
+              <div class="ui-g-8">
+                  <input pInputText type="text" formControlName="imageDimension" maxlength="50" disabled="true" />
+              </div>
+          </div>
+          <div class="ui-g-12">
+              <div class="ui-g-4">
+                  <label>Image Preview</label>
+              </div>
+              <div class="ui-g-8">
+                 <!--<input pInputText type="image" value=uploadedFiles formControlName="hostedSecureAPIToken" maxlength="50" />-->
+                  <img [src]='uploadedFilePath' id="uploadedImage"  class="e2e-untrusted-src" width=500 height=500 >
+                 <!--<p-galleria [images]="uploadedFiles" panelWidth="500" panelHeight="313" [showCaption]="true"></p-galleria>-->
+              </div>
+          </div>
+      </div>
+     </div>
+    </p-accordionTab>
+    <div class="buttonContainer">
+        <div>
+            <button pButton type="button" label="Cancel" class="cancel" (click)="onCancel()"></button>
+        </div>
+
+        <div>
+            <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+            <button pButton type="submit" label="Save" class="primary" (click)="savePhotographDetails()"></button>
+        </div>
+    </div>
+</p-accordion>
+</div>  
+</form>

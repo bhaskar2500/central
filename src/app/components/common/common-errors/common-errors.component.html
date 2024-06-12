@@ -1,0 +1,30 @@
+<!-- <div style="display:block;" [attr.class]="class">
+
+  <p-messages  *ngFor="let msg of msgs" [(value)]="msg.detail"  severity="success"></p-messages>
+
+  <span *ngFor="let msg of msgs">
+    <i *ngIf="msg.severity=='error'" class="fa fa-2x fa-close"> </i>
+    <i *ngIf="msg.severity=='success'" class="fa fa-2x fa-check"> </i>
+    <i *ngIf="msg.severity=='warning'" class="fa fa-2x fa-info-circle"> </i>
+    {{ msg.detail }}
+  </span>
+  <br/>
+</div> -->
+
+
+<p-dialog [(visible)]="display" [showHeader]="true" [modal]="true" [responsive]="true" appendTo="body" [width]="350" [minWidth]="200"
+  [minY]="200" [baseZIndex]="-1">
+  <p-header>
+   <span *ngIf="isSave">ALERT</span> 
+  </p-header>
+  <span *ngFor="let msg of msgs">
+
+    <i *ngIf="msg.severity=='error'" style="color:red" class="fa fa-2x fa-close"> </i>
+    <i *ngIf="msg.severity=='success'" style="color:green" class="fa fa-2x fa-check"> </i>
+    <i *ngIf="msg.severity=='warning'" style="color:blue" class="fa fa-2x fa-info-circle"> </i>
+    {{ msg.detail }}
+  </span>
+  <p-footer class="modal-footer">
+    <button type="button" pButton class="primary modal-close" (click)="display=false" label="CLOSE"></button>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,315 @@
+<form [formGroup]="ratesFormData" ngNativeValidate [lcPageSecurity]="'RateDetailsComponent'">
+  <div class="ui-g-12" style="height: 70px ; padding: 0px 0px 0px 0px; width: 939px ; margin-left: 8px">
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+  </div>
+
+  <div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Rate Calculations" [selected]="screenWidth>1100">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+            <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" #cd>
+              <p-footer>
+                <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+                <button type="button" pButton icon="fa-check" label="Yes" (click)="cd.accept()"></button>
+              </p-footer>
+            </p-confirmDialog>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+
+                <label> Active</label>
+              </div>
+              <div class="ui-g-3 ui-md-2">
+                <p-checkbox name="active" (onChange)="showDialog($event)" binary="true" formControlName='isActive' [lcFieldSecurity]="'isActiveChckBx'"></p-checkbox>
+                <i class="fa fa-question-circle-o" pTooltip=" Replaces the publish field. If checked, the rate is pushed out to the Channel, and if
+                unchecked, the rate is inactive. Uncheck to pause a rate temporarily."></i>
+              </div>
+
+            </div>
+            <!-- <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Add on</label>
+              </div>
+              <div class="ui-g-3 ui-md-2">
+                <p-checkbox name="active" binary="true" formControlName="addOn"></p-checkbox>
+                <i class="fa fa-question-circle-o" pTooltip=" Mark rate as an add on to an existing rate; i.e. Oversize or Premium Space"></i>
+              </div>
+            </div> -->
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Rate Type</label>
+                <span class="pull-right span asterixsign">*</span>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown class="dropdown" [options]="rateTypeData" #dd placeholder="Select" (onChange)="onSelectClick(dd)" [autoWidth]="false"
+                  optionLabel="elementValue" dataKey="elementId" formControlName="rateType" [lcFieldSecurity]="'rateTypeDrpDwn'"></p-dropdown>
+                <i class="fa fa-question-circle-o" pTooltip="Choose the rate type that matches rate type you want to create."></i>
+                <p-message *ngIf="ratesFormData && ratesFormData.controls.rateType && ratesFormData.controls.rateType.errors && ratesFormData.controls.rateType.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Rate Name</label>
+              </div>
+              <div class="ui-g-9">
+                <input type="text" pInputText formControlName="rateName" [lcFieldSecurity]="'rateNameTxt'" />
+                <i class="fa fa-question-circle-o" pTooltip="The Rate Name that will be used for display."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Increment</label>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="incrementData" placeholder="Select" [autoWidth]="false" optionLabel="elementValue" dataKey="elementId"
+                  formControlName="increment" [lcFieldSecurity]="'incrementDrpDwn'"></p-dropdown>
+                <i class="fa fa-question-circle-o" pTooltip="Drop down menu with that chooses how often an hourly-style rate is
+                 charged. Only valid when rate type selected is 'Hourly'. EX: if the rate is $10 every half hour, select “30 min” for increment."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Min Stay</label>
+              </div>
+              <div class="ui-g-4" style="max-width:100px;">
+                <p-dropdown [options]="minStayHours" [style]="{'width':'92px'}" formControlName="minStayHours" placeholder="hrs" [lcFieldSecurity]="'minStayHrsDrpDwn'"></p-dropdown>
+              </div>
+              <div class="ui-g-5">
+                <p-dropdown [options]="stayMinutes" formControlName="minStayMinutes" placeholder="mins" [lcFieldSecurity]="'minStayMinDrpDwn'"></p-dropdown>
+                <i class="fa fa-question-circle-o" style="margin-right: 5px;" pTooltip="Drop down menu with minimum amount of time a customer can park and receive this rate."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Max Stay</label>
+              </div>
+              <div class="ui-g-4" style="max-width:100px;">
+                <p-dropdown [options]="maxStayHours" [style]="{'width':'92px'}" formControlName="maxStayHours" placeholder="hrs" [lcFieldSecurity]="'maxStayHrsDrpDwn'"></p-dropdown>
+              </div>
+              <div class="ui-g-5">
+                <p-dropdown [options]="stayMinutes" formControlName="maxStayMinutes" placeholder="mins" [lcFieldSecurity]="'maxStayMinDrpDwn'"></p-dropdown>
+                <i class="fa fa-question-circle-o" style="margin-right: 5px;" pTooltip="Drop down menu with maximum amount of time a customer can park and receive this rate. Select the applicable hours and minutes for the rate.
+                 Do not select anything for the minutes field if not applicable."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Price ($)</label>
+              </div>
+              <div class="ui-g-9">
+                <input style="width:92px" currencyMask formControlName="price" [options]="{ prefix: '', decimal: '.', precision :'2', align :'left', allowZero: true }"
+                  class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ng-touched" style="width:100px;"
+                  maxlength="10" [lcFieldSecurity]="'priceTxt'" />
+                <i class="fa fa-question-circle-o" pTooltip=" Enters the price for a selected rate."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3" style="padding-left:0px;">
+                <label> Max Daily Price ($)</label>
+              </div>
+              <div class="ui-g-9">
+                <input style="width:92px" currencyMask formControlName="maxDailyPrice" [options]="{ prefix: '', decimal: '.', precision :'2', align :'left', allowZero: true }"
+                  class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ng-touched" style="width:100px;"
+                  maxlength="10" [lcFieldSecurity]="'maxDailyPriceTxt'" />
+                <i class="fa fa-question-circle-o" pTooltip=" Used for hourly rates, sets the price cap for the daily max rate a parker
+                  can pay. Can be left blank if there is not a max price."></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+
+      <p-accordionTab header="In By/Out By" [selected]="false">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-12">
+              <div class=" ui-g-3">
+                <label> Applicable Days </label>
+              </div>
+              <div class="ui-g-9">
+                <p-multiSelect pTooltip="{{toolTipWeekDays}}" [filter]="false" (onChange)="onWeekDaySelected($event)" [displaySelectedLabel]="true"
+                  [options]="weekDays" optionLabel="dayName" dataKey="dayId" formControlName="selectedWeekDays" [lcFieldSecurity]="'applicableDaysMulti'">
+                </p-multiSelect>
+                <i class="fa fa-question-circle-o" pTooltip="Check boxes representing the entry day
+                that this rate is valid. EX: an early-bird rate would only have M-F checked, and a weekend rate would only have
+                Sat-Sun checked." style="position: absolute;padding-top: 5px;margin-left:3px"></i>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-8 ui-md-4">
+                <label style="float:left;padding-top:0px;font-size:14px;">In By </label>
+                <i class="fa fa-question-circle-o" pTooltip="Select two time ranges for when the customer must enter to be eligible for this rate.
+  Leave null if rate has no time restrictions. i.e. If night rate that's enter by 5pm and exit by 12am (midnight) then Lower
+   with be 5pm and upper  can be left blank" style="margin-left: 10px;"></i>
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Lower Limit </label>
+                <span class="span pull-right asterixsign">*</span>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="dropDownBounds" [autoWidth]="false" optionLabel="label" dataKey="value" required placeholder="Select"
+                  formControlName="entryStartTime" [lcFieldSecurity]="'inLowerLmtDrpDwn'"></p-dropdown>
+                <p-message *ngIf="ratesFormData && ratesFormData.controls.entryStartTime && ratesFormData.controls.entryStartTime.errors && ratesFormData.controls.entryStartTime.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Upper Limit </label>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="dropDownBounds" [autoWidth]="false" optionLabel="label" dataKey="value" required placeholder="Select"
+                  formControlName="entryEndTime" [lcFieldSecurity]="'inUpperLmtDrpDwn'"></p-dropdown>
+
+              </div>
+            </div>
+
+            <div class="ui-g-12">
+              <div class="ui-g-8 ui-md-4">
+                <label style="float:left;padding-top:0px;font-size:14px;"> Out By </label>
+                <i class="fa fa-question-circle-o" pTooltip="Select two time ranges for when the customer must enter and exit to be eligible for this rate.
+              Leave null if rate has no time restrictions. For rates with only an upper time limit select only the Exit Period
+              Upper limit and leave the lower limit null." style="margin-left: 10px;"></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+
+              <div class="ui-g-3">
+                <label> Lower Limit </label>
+                <span class="span pull-right asterixsign">*</span>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="dropDownBounds" [autoWidth]="false" optionLabel="label" dataKey="value" required placeholder="Select"
+                  formControlName="exitStartTime" [lcFieldSecurity]="'outLowerLmtDrpDwn'"></p-dropdown>
+                <p-message *ngIf="ratesFormData && ratesFormData.controls.exitStartTime && ratesFormData.controls.exitStartTime.errors && ratesFormData.controls.exitStartTime.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+            <div class="ui-g-12">
+
+              <div class="ui-g-3">
+                <label> Upper Limit </label>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="dropDownBounds" [autoWidth]="false" optionLabel="label" dataKey="value" required placeholder="Select"
+                  formControlName="exitEndTime" [lcFieldSecurity]="'outUpperLmtDrpDwn'"></p-dropdown>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Additional Days </label>
+              </div>
+              <div class="ui-g-9">
+                <p-dropdown [options]="additionalDays" placeholder="Select" formControlName="additionalDays" [lcFieldSecurity]="'additionalDaysDrpDwn'"></p-dropdown>
+                <i class="fa fa-question-circle-o" pTooltip="Denotes if upper limit can be a different day  i.e. 
+                  if upper limit is 3am the next day then Upper Limit would be 3am and Additional Days would be 1 for the next day.
+                  If A weekend special enter Friday and exit by Sunday midnight then Upper limit would be midnight and Additional Days would be 2"
+                  style="margin-right: 5px;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+      <p-accordionTab header="Other Rules" [selected]="false">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Combinable</label>
+              </div>
+              <div class="ui-g-3 ui-md-2">
+                <p-checkbox name="combinable" binary="true" formControlName="combinable" [disabled]=false [lcFieldSecurity]="'combinableChckBx'"></p-checkbox>
+                <i class="fa fa-question-circle-o" pTooltip="This rate can be combined with other rates. i.e. if have 3, 6, 12, 24 hr rates and all 4 are marked combinable then if a customer stays 26 hours then the price charged is the 24hr rate + the 3 hr rate.
+                  Specials shouldn't be marked combinable - if a customer enters during valid EB hrs but exceeds the 12 hr limit and parks for 14 hrs then they are priced the 14 hr rate, not the EB rate + 3 hr rate"></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Non-refundable</label>
+              </div>
+              <div class="ui-g-3 ui-md-2">
+                <p-checkbox name="nonRefundable" binary="true" formControlName="nonRefundable" [disabled]=false [disabled]=false [lcFieldSecurity]="'nonRefundableChckBx'"></p-checkbox>
+                <i class="fa fa-question-circle-o" pTooltip="Checking  this box means that this rate cannot be refunded if pre-purchased."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label>Multiple In and Out</label>
+              </div>
+              <div class="ui-g-3 ui-md-2">
+                <p-checkbox name="nonRefundable" binary="true" formControlName="multipleInAndOut" [disabled]=false [lcFieldSecurity]="'multiInOutChckBx'"></p-checkbox>
+                <i class="fa fa-question-circle-o" pTooltip="Checking this box allows parkers to enter and exit the location as many times as they would like during their pre-booked stay. This should be left unchecked for board rates. "></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </p-accordionTab>
+      <p-accordionTab header="Applicable Channels" [selected]="false">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-3">
+              <label> Applicable Channels </label>
+            </div>
+            <div class="ui-g-9">
+              <p-multiSelect [options]="selectedChannelPartners" pTooltip="{{ toolTipChannels }}" (onChange)="onChannelSelected($event)"
+                optionLabel="name" dataKey="channelPartnerKey" formControlName="selectedChannels" [lcFieldSecurity]="'channelsMulti'"></p-multiSelect>
+              <i style="position: absolute;padding-top: 5px;margin-left:3px" class="fa fa-question-circle-o" pTooltip="Check the box(es) for the channels this rate will be distributed to. Board Rate is not a distribution channel, this indicates to SP+.com to publish this rate statically as a drive up rate.
+              All drive up rates should be coded here and distributed to all channels."></i>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+      <p-accordionTab header="Effective Dates" [selected]="false">
+        <div class="ui-g">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-g-12">
+              <div class="ui-g-8 ui-md-6">
+                <label style="float:left;padding-top:0px;"> Effective Dates </label>
+                <i style="    margin-left: 5px;" class="fa fa-question-circle-o" pTooltip="Dates the rate is active for, if the rate begins in a week, set the start date
+                to that day at midnight."></i>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> Start Date </label>
+                <span class="span pull-right asterixsign">*</span>
+              </div>
+              <div class="ui-g-9">
+                <p-calendar [showOtherMonths] = "false" class="dateField" placeholder="Select Date" [minDate]="minDateValue"  formControlName="startDate"  showButtonBar="true" dateFormat="mm/dd/y" [showIcon]="true" [lcFieldSecurity]="'rateStartDtCal'"></p-calendar>
+                <p-message *ngIf="ratesFormData && ratesFormData.controls.startDate && ratesFormData.controls.startDate.errors && ratesFormData.controls.startDate.dirty"
+                  severity="error" text="Field is required"></p-message>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="ui-g-3">
+                <label> End Date </label>
+              </div>
+              <div class="ui-g-9">
+                <p-calendar [showOtherMonths] = "false"  class="dateField" placeholder="Select Date" [minDate]="minDateValue"  showButtonBar="true" formControlName="endDate" dateFormat="mm/dd/y" [showIcon]="true" [lcFieldSecurity]="'rateEndDtCal'"></p-calendar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-accordionTab>
+      <div class="buttonContainer">
+          <div>
+              <button pButton type="button" label="Cancel" class="cancel" (click)="redirectToRates()"></button>
+          </div>
+
+          <div>
+              <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+              <button pButton type="submit" label="Save" class="primary" (click)="saveRate(true)" [lcFieldSecurity]="'saveRatesBtn'"></button>
+          </div>
+      </div>
+    </p-accordion>
+  </div>
+
+</form>

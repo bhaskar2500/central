@@ -1,0 +1,76 @@
+<form [formGroup]="subsidiaryFormdata" ngNativeValidate [lcPageSecurity] = "'SubsidiaryDetails'" >
+ <div class="ui-g-12" style="height: 63px ; padding: 0px 0px 0px 0px; width: 939px ; margin-left: 8px">
+    <p-messages [(value)]="msgs" [closable]="false"></p-messages>
+ </div>
+    <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"  [closable]="false"></p-confirmDialog>
+<div class="ui-g-12 accordion-wrapper">
+    <p-accordion [multiple]="true">
+        <p-accordionTab header="Subsidiary Information"  [selected]="screenWidth>1100">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Active </label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <p-checkbox name="groupname" formControlName="isActive" binary="true" (onChange)="checkstate()"></p-checkbox>
+                    </div>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Name </label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <input pInputText type="text" formControlName="name" />
+                    </div>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Code </label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <input pInputText type="text" maxlength="3" formControlName="code" />
+                    </div>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Description </label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <input pInputText type="text" formControlName="description" />
+                    </div>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Discount ($)</label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <input currencyMask formControlName="discountAmount" style="width:77px" [options]="{ prefix: '', decimal: '.', precision :'2', align :'left', allowZero: true }" 
+                class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ng-touched" style="width:100px;" maxlength="10"/>
+                    </div>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-3 ui-md-2">
+                        <label>Discount (%)</label>
+                    </div>
+                    <div class="ui-g-9 ui-md-10">
+                        <p-inputMask [autoClear]="false" [style]="{'width':'77px'}" slotChar=" " mask="999" placeholder="Max 100%" formControlName="discountPercentage"></p-inputMask>
+                        <p-message  *ngIf="sudsidaryFlag==1" severity="error" text="Please enter value less than or equal to 100"></p-message>
+                    </div>
+                </div>
+            </div>
+        </p-accordionTab>
+
+        <div class="buttonContainer">
+            <div>
+                <button pButton type="button" label="Cancel" class="cancel" (click)="cancel()"></button>
+            </div>
+
+            <div>
+                <button pButton type="submit" label="Save &amp; Close" class="primary" [lcFieldSecurity]="''"></button>
+
+                <button pButton type="submit" label="Save" class="primary" (click)="submitSubsidiary($event)"></button>
+            </div>
+        </div>
+    </p-accordion>
+</div>    
+</form>

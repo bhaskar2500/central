@@ -1,0 +1,198 @@
+$breakpoint: 799px;
+$color_1: maroon;
+$color_2: #cc0000;
+$color_3: brown;
+$color_4: black;
+$font_open_sans: "Open Sans Regular & Bold";
+$font_din: "DIN Alternate Bold";
+$background_color_1: rgb(236, 236, 236);
+$border_color_1: brown;
+
+.mainBox {
+	margin: 0px 0px 0px 0px;
+	border-bottom: 5px solid maroon;
+	overflow: hidden;
+	box-shadow: 0 4px 2px -2px gray;
+  max-height: 125px;
+  background-color: white;
+}
+.headerNavBox{
+padding: 0px;
+min-width: 490px;
+float: right;
+position: absolute;
+right:0;
+direction: rtl;
+}
+
+.seperator{
+	border-right: 1px #d13239 solid;
+	margin-right: 10px;
+	font-size: 20px;
+}
+.ui-button:enabled:hover{
+	background: white;
+	border:0px;
+	outline: 0 none;
+	color: #d13239;
+}
+
+.iconStyles,button.iconStyles{
+	border:none !important;
+	background-color: transparent;
+	color:#d13239;
+	font-size:22px;
+}
+
+.iconStyles:focus,button.iconStyles:focus,button.iconStyles:active {     
+	background-color:transparent;    
+	color:#d13239;
+	border:none !important;
+}
+span.appTitleLabel{
+	float: none;
+	color: #5B5B5B;
+	font-size: 25px;
+	font-family: ‘Montserrat’, sans-serif;
+    position: absolute;
+    top: 20px;
+    left: 75px;
+    font-weight: 500;
+}
+
+label {
+	color: $color_1;
+	font-weight: bold;
+	font-size: medium;
+}
+img {
+	max-width: 150px;
+	height:80px;
+	font-family: $font_open_sans;
+}
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.channelMgmt {
+	background-color: $background_color_1;
+	color: $color_3 !important;
+	border-color: $border_color_1;
+	float: right;
+ 	height: 2.5em;
+	margin-right: 16px;
+	margin-top: 29px;
+}
+
+.textLabelDiv{
+	text-align: right;
+	margin-top: 12px;
+}
+input.textLabel {
+ 	height: 23px;
+ 	background-color: white;
+	 border:none;
+	 font-size: large;
+	 font-weight: 600;
+}
+
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.channelMgmt {
+	background-color: $background_color_1;
+	color: $color_3 !important;
+	border-color: $border_color_1;
+	width: 16em;
+	height: 2em;
+	}
+div.headerButtons{
+	position: absolute;
+  right: 0;
+	top: 30px;
+}
+
+
+.topnav {
+	overflow: hidden;
+	display: none;
+	right:0;
+	top:0;
+	position: absolute;
+	z-index:1;
+  }
+  
+  .topnav a {
+	float: right;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+  }
+  
+  .topnav a:hover {
+	color:#d13239;
+  }
+  
+  .topnav .icon {
+	display: none;
+  }
+
+@media screen and (max-width: 500px) {
+	.topnav{display: block ;}
+	.topnav a:not(:first-child) {display: none;}
+	.topnav a.icon {
+	  display: block;
+		color:#d13239;
+		padding-right: 5px;
+    margin-top: 25px;
+		font-size: 22px;
+	}
+	#locationDetails{	
+		display: none;	
+	}
+  }
+  
+  @media screen and (max-width: 500px) {
+	.topnav.responsive{
+		height:100%;
+		// box-shadow: -1px 2px 22px grey;
+	}
+	.topnav.responsive .icon {
+	  position: relative;
+	  right: 0;
+	  top: 0;
+		color:white;
+		text-align: right;
+		font-size:large;
+		background-color:#d13239;
+	}
+	
+	.topnav.responsive a {
+		background-color:#edeeee;
+	  float: none;
+	  text-align: left;
+	  display:block;
+		font-size:14px;
+		font-family: $font_open_sans;
+		color: black;
+		font-weight:200;
+		}
+	}
+		@media screen and (max-width:700px) {
+		.headerButtons{
+		position: relative !important;
+    right: 0;
+    float: right;
+		bottom: 15px;
+		top:0px !important ;	
+		margin-bottom:30px;
+		}
+		.mainBox{
+			max-height: 100% !important;
+		}
+		.appTitleLabel{
+			font-size: 20px !important;
+		}
+		}
+	.headerLocDetails{
+		position: absolute;
+		top: 54px;
+    right: -24px;
+
+		}

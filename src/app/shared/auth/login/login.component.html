@@ -1,0 +1,50 @@
+<div class="ui-g-12">
+  <div class="ui-g-3"></div> 
+    <p-message severity="info" text="This page will be replaced with AuthSecure."></p-message><br/>
+     <div class="ui-g-3"></div> 
+    <p-message severity="info" text="login Id: gkalyan, password : gkalyan"></p-message>
+</div>
+<div class="login-box">
+  <div class="logo-container">
+    <img [src]="image">
+  </div>
+  <div class="form-container">
+        <div *ngIf="loginFormdata && loginFormdata.controls.networkId && loginFormdata.controls.networkId.errors && (loginFormdata.controls.networkId.dirty || loginFormdata.controls.networkId.touched)" class="alert alert-danger">
+                <h2  [hidden]="!loginFormdata.controls.networkId.errors.required">
+                  User Name is required!
+                </h2>
+                </div>
+                <div *ngIf="loginFormdata && loginFormdata.controls.password && loginFormdata.controls.password.errors && (loginFormdata.controls.password.dirty || loginFormdata.controls.password.touched)" class="alert alert-danger">
+                        <h2 [hidden]="!loginFormdata.controls.password.errors.required">
+                        Password is required!
+                        </h2>
+                        </div>
+<!--<h1  *ngIf="showError==1" style=" border: 1px solid red; color:red; font-weight:bold; margin-right: 50px; margin-left: 25px;">!!check credential!!</h1>-->
+
+    <form [formGroup]="loginFormdata" (ngSubmit)="onSubmit()" ngNativeValidate >
+      <p>
+          <label class="login" for="uid">User Name</label><span>*</span><br>
+          <input class="form-control" type="text" id="uid" formControlName="networkId"  />
+      </p>
+<!--<div *ngIf="loginFormdata && loginFormdata.controls.networkId && loginFormdata.controls.networkId.errors && (loginFormdata.controls.networkId.dirty || loginFormdata.controls.networkId.touched)" class="alert alert-danger">
+            <div [hidden]="!loginFormdata.controls.networkId.errors.required">
+              uid is required!
+            </div>
+            </div>-->
+
+      <p>
+          <label class="login">Password</label><span>*</span><br>  
+          <input class="form-control" type="password" formControlName="password"  />
+      </p>
+      
+      <p>
+              <button  class="login" (click)="onSubmit()" pButton type="submit" label="Login" ></button>
+      
+      </p>
+      <p class="note">
+          Please contact admin@locationcentral.com for access
+      </p>
+      </form>
+
+  </div>  
+</div>

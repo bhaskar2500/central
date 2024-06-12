@@ -1,0 +1,62 @@
+// Variables
+$breakpoint: 799px;
+.login-box{
+margin:auto;
+width:400px;
+}
+.logo-container{
+    margin-left:30%;
+}
+
+.form-container{
+    margin:auto;
+    border: 1px solid rgb(250, 246, 246);
+    background-color: rgb(190, 184, 184);
+    padding-left: 25px;
+}
+p{
+    padding-top:20px;
+}
+p.note{
+    padding-right:5px;
+}
+label{
+    font-size: 150%;
+}
+input{
+    width: 80%; 
+    padding: 12px 20px;
+}
+button{
+     margin-left: 35%;
+}
+span{
+    color:red;
+}
+h2{
+    border: 1px solid red; color:red;  margin-right: 50px; margin-left: 25px
+}
+label.login{
+    float:none;
+}
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.login{
+    background-color:red;
+    color:white !important;
+    border-color: red;
+    border-radius: 5px;
+ }
+@media screen and (max-width:$breakpoint/2){
+    .login-box{
+        margin-left:0px;
+        width:100%;
+    }
+    .logo-container{
+        margin-left:20%;
+    }
+    .form-container{
+        padding-right: 25px;
+    }
+    input{
+    padding: 12px 20px;
+    }
+}

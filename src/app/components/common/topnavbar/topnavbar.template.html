@@ -1,0 +1,51 @@
+
+<div class="row border-bottom white-bg"  [lcPageSecurity] = "'topBar'">
+  <nav class="navbar navbar-fixed-top navbar-transparent" role="navigation">
+    <div  style="padding:0px; display:inline-block;">
+      <div style="display:inline;cursor: pointer;" class="ui-g-3">
+        <img [src]="logoPath" (click)="redirectToLocationSearch()" height="55px" style="margin: 5px;">
+      </div>
+      <span class="appTitleLabel ui-g-6" style="font-size: 25px; position: absolute; top: 17px; left: 100px; padding: 5px;">MY SPOT {{headerName=='' ?'':' - '+ headerName }}</span>
+    </div>
+    <div class="hamburgerHeader">
+
+      <a routerLink="/lc/locationSearch"><i class="fa fa-search search" toolTip="Search a location"></i></a>
+      <form role="search" class="navbar-form-custom" method="post" action="#">
+        <div class="form-group">
+          <a routerLink="/lc/locationSearch" class="search form-control" style="margin-top:15px;" name="top-search" id="top-search">
+            Search for a location </a>
+        </div>
+      </form>
+      <a class="minimalize-styl-2" (click)="toggleNavigation()">
+        <i class="fa fa-bars hamburger"></i>
+      </a>
+      <div class="topnav boxed-layout" id="myTopnav">
+        <a class="inactiveLink" >
+          <i class="fa fa-user" style="color:red;margin-right:10px;"></i>
+          {{ currentUser.networkId}}
+          <div class="icon"  (click)="toggleNavigation()">
+            <i class="fa fa-close" style="color:white"></i>
+          </div>
+        </a>
+        <a *ngIf="menuSchema!='locationSearch'" routerLink="/lc/locationSearchResults" (click)="toggleNavigation()">Home</a>
+        <a routerLink="/lc/channelManagement" (click)="toggleNavigation()" [lcFieldSecurity]="'ChannelManagementLnk'">Channel Management</a>
+        <a routerLink="/lc/referenceTableManagement" (click)="toggleNavigation()" [lcFieldSecurity]="'ReferenceManagementLnk'">Reference Table Management</a>
+        <a class="logOut" (click)="logOut()">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<div style="margin-top: 8em;" ></div>
+
+<div [hidden]="menuSchema=='management' || menuSchema=='locationSearch'"  class="headerLabel middle-box text-center animated fadeInDown" >
+<div class="ui-g-12">
+  <a routerLink="/lc/locationDetails" class="selectedLocation" *ngIf ="selectedLocation?.locationCode" >{{ selectedLocation?.locationCode }} </a>
+  <span style="color: #5B5B5B" class="selectedLocation locationSeperator" *ngIf ="selectedLocation?.locationCode"> {{ selectedLocation?.name }}</span>
+</div>
+<div class="ui-g-12">
+  <span class="selectedLocation" style="font-size:18px;" *ngIf ="selectedLocation?.primaryAddress"> {{ selectedLocation?.primaryAddress?.address1 }}</span>
+</div>
+</div>
+<div style="margin-top: 8em;" ></div>
+<p-breadcrumb *ngIf="1!=1" [model]="items" [home]=home></p-breadcrumb>
+<lc-common-errors [hidden]="menuSchema=='locationSearch'" class="animated fadeInDown" style="padding-left: 1px"> </lc-common-errors>

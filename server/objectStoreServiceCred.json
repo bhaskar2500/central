@@ -1,0 +1,9 @@
+{
+  "apikey": "B85ROQKZMk9_NeWIVWfrvvgh6aa2QTl5uAQjS0f0ZJ1Q",
+  "endpoints": "https://cos-service.bluemix.net/endpoints",
+  "iam_apikey_description": "Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:cloud-object-storage:global:a/9ed7cbb96b1ad0c7fd9c180551834905:979d8024-a937-4f09-bbd8-55edd769a0fd::",
+  "iam_apikey_name": "auto-generated-apikey-9a6e8da0-3362-44cd-ab32-959a045e5172",
+  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/9ed7cbb96b1ad0c7fd9c180551834905::serviceid:ServiceId-ec2a32c0-e262-406e-9945-5d748251c56a",
+  "resource_instance_id": "crn:v1:bluemix:public:cloud-object-storage:global:a/9ed7cbb96b1ad0c7fd9c180551834905:979d8024-a937-4f09-bbd8-55edd769a0fd::"
+}
